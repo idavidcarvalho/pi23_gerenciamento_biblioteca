@@ -1,3 +1,48 @@
 from django.contrib import admin
+from .models import Cargo, Usuario, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Livro, Periodico, Hemeroteca, Multimidia, Leitor, Emprestimo 
 
-# Register your models here.
+@admin.register(Cargo)
+class CargoAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Usuario)
+class UsuarioAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Autor)
+class AutorAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Editora)
+class EditoraAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Classificacao)
+class ClassificacaoAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Secao)
+class SecaoAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Estado)
+class EstadoAdmin(admin.ModelAdmin):
+    ...
+@admin.register(TipoPeriodico)
+class TipoPeriodicoAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Produtora)
+class ProdutoraAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Livro)
+class LivroAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Periodico)
+class PeriodicoAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Hemeroteca)
+class HemerotecaAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Multimidia)
+class MultimidiaAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Leitor)
+class LeitorAdmin(admin.ModelAdmin):
+    ...
+@admin.register(Emprestimo)
+class EmprestimoAdmin(admin.ModelAdmin):
+    ...
