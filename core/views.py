@@ -36,7 +36,7 @@ def cadastro_cargo(request):
     form = CargoForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('cadastro_cargo')
+        return redirect('cargos')
     contexto = {
         'form': form
     }
@@ -56,7 +56,7 @@ def editar_cargo(request, id):
     form = CargoForm(request.POST or None, instance=cargo)
     if form.is_valid():
         form.save()
-        return redirect('cargo')
+        return redirect('cargos')
     contexto = {
         'form': form
     }
@@ -66,7 +66,7 @@ def editar_cargo(request, id):
 def remover_cargo (request,id):
     cargo = Cargo.objects.get(pk=id)
     cargo.delete()
-    return redirect('cargo')
+    return redirect('cargos')
 
 
 # ------- CRUD Autor -------
@@ -111,7 +111,7 @@ def cadastro_editora(request):
     form = EditoraForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('cadastro_editora')
+        return redirect('editora')
     contexto = {
         'form': form
     }
@@ -149,7 +149,7 @@ def cadastro_classificacao(request):
     form = ClassificacaoForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('cadastro_classificacao')
+        return redirect('classificacao')
     contexto = {
         'form': form
     }
