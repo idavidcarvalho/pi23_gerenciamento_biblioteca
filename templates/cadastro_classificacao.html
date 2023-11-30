@@ -1,0 +1,18 @@
+!<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Classificação</title>
+</head>
+<body>
+    <h2>Cadastro de Classificação</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            {{form}} 
+        </p>
+        <button type="submit" value="Enviar">Salvar</button>
+    </form>
+</body>
+</html>

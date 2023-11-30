@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargos</title>
+</head>
+<body>
+    <h1>Lista de Cargos</h1>
+    <p><a href="{% url 'cadastro_cargo' %}">Adicionar novo Cargo</a></p>
+
+    {% for cargo in lista_cargos %}
+    <p>
+        Nome: {{ cargo.nome }} 
+        <a href="{% url 'editar_cargo' cargo.id %}">Editar</a>
+        <a href="{% url 'remover_cargo' cargo.id %}">Deletar</a>
+    </p>
+    {% empty %}
+    <p>Nenhum cargo cadastrado!</p>
+    {% endfor %}
+</body>
+</html>

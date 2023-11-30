@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação</title>
+</head>
+<body>
+    <h2> Lista - CLASSIFICAÇÃO</h2>
+    <p><a href="{% url 'cadastro_classificacao' %}">Adicionar Nova Classificação</a></p>
+
+    {% for cargo in lista_classificacao %}
+    <p>
+        Nome: {{ classificacao.nome }} 
+        <a href="{% url 'editar_classificacao' classificacao.id %}">Editar</a>
+        <a href="{% url 'remover_classificacao' classificacao.id %}">Deletar</a>
+    </p>
+    {% empty %}
+    <p>Nenhuma classificação cadastrada!</p>
+    {% endfor %}
+</body>
+</html>

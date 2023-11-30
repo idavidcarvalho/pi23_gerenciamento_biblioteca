@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editoras</title>
+</head>
+<body>
+    <h2> Lista - EDITORA</h2>
+    <p><a href="{% url 'cadastro_editora' %}">Adicionar Nova Editora</a></p>
+
+    {% for cargo in lista_editora %}
+    <p>
+        Nome: {{ editora.nome }} 
+        <a href="{% url 'editar_editora' editora.id %}">Editar</a>
+        <a href="{% url 'remover_editora' editora.id %}">Deletar</a>
+    </p>
+    {% empty %}
+    <p>Nenhuma editora cadastrada!</p>
+    {% endfor %}
+</body>
+</html>
