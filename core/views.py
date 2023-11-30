@@ -74,7 +74,7 @@ def cadastro_autor(request):
     form = AutorForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('cadastro_autor')
+        return redirect('autor')
     contexto = {
         'form': form
     }
