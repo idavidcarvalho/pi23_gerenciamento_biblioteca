@@ -9,7 +9,7 @@
     <h2> Lista - CLASSIFICAÇÃO</h2>
     <p><a href="{% url 'cadastro_classificacao' %}">Adicionar Nova Classificação</a></p>
 
-    {% for cargo in lista_classificacao %}
+    {% for classificacao in listar_classificacao %}
     <p>
         Nome: {{ classificacao.nome }} 
         <a href="{% url 'editar_classificacao' classificacao.id %}">Editar</a>

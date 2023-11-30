@@ -9,7 +9,7 @@
     <h1>Lista de Cargos</h1>
     <p><a href="{% url 'cadastro_cargo' %}">Adicionar novo Cargo</a></p>
 
-    {% for cargo in lista_cargos %}
+    {% for cargo in listar_cargos %}
     <p>
         Nome: {{ cargo.nome }} 
         <a href="{% url 'editar_cargo' cargo.id %}">Editar</a>

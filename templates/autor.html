@@ -9,7 +9,7 @@
     <h1>LISTA DE AUTORES</h1>
     <p><a href="{% url 'cadastro_autor' %}">Adicionar novo Autor</a></p>
 
-    {% for autor in listar_autores %}
+    {% for autor in listar_autor %}
     <p>
         Nome: {{ autor.nome }} 
         <a href="{% url 'editar_autor' autor.id %}">Editar</a>

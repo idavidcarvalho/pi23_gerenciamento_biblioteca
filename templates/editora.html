@@ -9,7 +9,7 @@
     <h2> Lista - EDITORA</h2>
     <p><a href="{% url 'cadastro_editora' %}">Adicionar Nova Editora</a></p>
 
-    {% for cargo in lista_editora %}
+    {% for editora in listar_editora %}
     <p>
         Nome: {{ editora.nome }} 
         <a href="{% url 'editar_editora' editora.id %}">Editar</a>
