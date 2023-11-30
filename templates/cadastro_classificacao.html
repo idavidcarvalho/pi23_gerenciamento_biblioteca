@@ -1,18 +1,32 @@
-!<!DOCTYPE html>
+{% load static %}
+</html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Classificação</title>
+    <title>Classificação</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'registro_livro.css' %}">
 </head>
 <body>
-    <h2>Cadastro de Classificação</h2>
-    <form method="POST">
-        {% csrf_token %}
-        <p>
-            {{form}} 
-        </p>
-        <button type="submit" value="Enviar">Salvar</button>
-    </form>
+    <div class="container">
+        <main>
+        <p class="cadastro">CADASTRE UMA NOVA CLASSIFICAÇÃO</p>
+        <div class="form-leitor">
+            <form method="post">
+                {% csrf_token %}
+                <label for="nome">CLASSIFICAÇÃO</label>
+                <div class="div-input">
+                    {{form.nome}}
+                </div>
+
+                <div class="button">
+                    <input type="submit" class="bt-cadastrar" value="CADASTRAR">
+                </div>
+            </form>
+        </div>
+        </main>
+    </div>
 </body>
 </html>

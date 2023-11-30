@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+  }
+
+.container{
+    background-color: #ECF2F7;
+    display: flex;
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-areas: 
+        "main";
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        justify-content: center;
+}
+.form-leitor{
+    width: 600px;
+    margin-top: 70px;
+}
+
+
+
+.form-emprego{
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.input-emprego{
+    border-radius: 8px;
+    border:1px solid #8B97B2;
+    background-color: #FFFFFF;
+    outline:none;
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
+}
+
+.profissao{
+    width: 50%;
+}
+
+.div-input{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 14px;
+    margin-top: 5px;
+}
+
+.div-input input{
+    border-radius: 8px;
+    border:1px solid #8B97B2;
+    background-color: #FFFFFF;
+    outline:none;
+    width: 100%;
+    height: 100%;
+}
+
+.cadastro{
+    margin-top: 50px;
+    text-align: center;
+    font-family: League Spartan;
+    font-size: 20px;
+    color: #022978;
+}
+
+label{
+    font-family: League Spartan;
+    font-size: 14px;
+}
+
+.bt-cadastrar{
+    background-color: #4778EC;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+    font-family: League Spartan;
+    width: 120px;
+}
+
+.button{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.button:hover{
+    transform: scale(1.1);
+    transition: all 0.1s;
+}
