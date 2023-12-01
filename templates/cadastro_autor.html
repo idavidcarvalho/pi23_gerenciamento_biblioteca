@@ -1,3 +1,4 @@
+{% load widget_tweaks %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,7 +18,7 @@
                 {% csrf_token %}
                 <label for="nome">AUTOR</label>
                 <div class="div-input">
-                    {{form.nome}}
+                    {% render_field form.nome class="div-input" %}
                 </div>
 
                 <div class="button">

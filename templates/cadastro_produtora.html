@@ -5,18 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cargo</title>
+    <title>Cadastro de Produtora</title>
     <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'registro_livro.css' %}">
 </head>
 <body>
     <div class="container">
         <main>
-        <p class="cadastro">CADASTRE UM NOVO CARGO</p>
+        <p class="cadastro">CADASTRE UMA NOVA PRODUTORA</p>
         <div class="form-leitor">
             <form method="post">
                 {% csrf_token %}
-                <label for="nome">CARGO</label>
+                <label for="nome">PRODUTORA</label>
                 <div class="div-input">
                     {% render_field form.nome class="div-input" %}
                 </div>

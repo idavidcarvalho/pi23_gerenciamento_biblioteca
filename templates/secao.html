@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seção</title>
+</head>
+<body>
+    <h1>Lista de Seções</h1>
+    <p><a href="{% url 'cadastro_secao' %}">Adicionar nova seção</a></p>
+
+    {% for secao in listar_secao %}
+    <p>
+        Nome: {{ secao.nome }} 
+        <a href="{% url 'editar_secao' secao.id %}">Editar</a>
+        <a href="{% url 'remover_secao' secao.id %}">Deletar</a>
+    </p>
+    {% empty %}
+    <p>Nenhuma seção cadastrado!</p>
+    {% endfor %}
+</body>
+</html>

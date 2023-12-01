@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtora</title>
+</head>
+<body>
+    <h1>Lista - Produtoras</h1>
+    <p><a href="{% url 'cadastro_produtora' %}">Adicionar uma nova produtora</a></p>
+
+    {% for produtora in listar_produtora %}
+    <p>
+        Nome: {{ produtora.nome }} 
+        <a href="{% url 'editar_produtora' produtora.id %}">Editar</a>
+        <a href="{% url 'remover_produtora' produtora.id %}">Deletar</a>
+    </p>
+    {% empty %}
+    <p>Nenhuma produtora cadastrada!</p>
+    {% endfor %}
+</body>
+</html>

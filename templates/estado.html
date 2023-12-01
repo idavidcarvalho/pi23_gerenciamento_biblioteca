@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estados</title>
+</head>
+<body>
+    <h1>Lista de Estados</h1>
+    <p><a href="{% url 'cadastro_estado' %}">Adicionar um novo estado</a></p>
+
+    {% for estado in listar_estado %}
+    <p>
+        Nome: {{ estado.nome }} 
+        <a href="{% url 'editar_estado' estado.id %}">Editar</a>
+        <a href="{% url 'remover_estado' estado.id %}">Deletar</a>
+    </p>
+    {% empty %}
+    <p>Nenhuma estado cadastrado!</p>
+    {% endfor %}
+</body>
+</html>

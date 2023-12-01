@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipo de Periódico</title>
+</head>
+<body>
+    <h1>Lista de Periódicos</h1>
+    <p><a href="{% url 'cadastro_tipo_periodico' %}">Adicionar um novo tipo de periódico</a></p>
+
+    {% for tipo_periodico in listar_tipo_periodico %}
+    <p>
+        Nome: {{ tipo_periodico.nome }} 
+        <a href="{% url 'editar_tipo_periodico' tipo_periodico.id %}">Editar</a>
+        <a href="{% url 'remover_tipo_periodico' tipo_periodico.id %}">Deletar</a>
+    </p>
+    {% empty %}
+    <p>Nenhuma tipo de periódico cadastrado!</p>
+    {% endfor %}
+</body>
+</html>

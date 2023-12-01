@@ -29,5 +29,24 @@ urlpatterns = [
     path('cadastro_classificacao/', cadastro_classificacao, name='cadastro_classificacao'),
     path('editar_classificacao/<int:id>/', editar_classificacao, name='editar_classificacao'),
     path('remover_classificacao/<int:id>/', remover_classificacao, name='remover_classificacao'),
+
+    path('secao/', secao, name='secao'),
+    path('cadastro_secao/', cadastro_secao, name='cadastro_secao'),
+    path('editar_secao/<int:id>/', editar_secao, name='editar_secao'),
+    path('remover_secao/<int:id>/', remover_secao, name='remover_secao'),
+
+    path('estado/', estado, name='estado'),
+    path('cadastro_estado/', cadastro_estado, name='cadastro_estado'),
+    path('editar_estado/<int:id>/', editar_estado, name='editar_estado'),
+    path('remover_estado/<int:id>/', remover_estado, name='remover_estado'),
     
+    path('tipo_periodico/', tipo_periodico, name='tipo_periodico'),
+    path('cadastro_tipo_periodico/', cadastro_tipo_periodico, name='cadastro_tipo_periodico'),
+    path('editar_tipo_periodico/<int:id>/', editar_tipo_periodico, name='editar_tipo_periodico'),
+    path('remover_tipo_periodico/<int:id>/', remover_tipo_periodico, name='remover_tipo_periodico'),
+
+    path('produtora/', produtora, name='produtora'),
+    path('cadastro_produtora/', cadastro_produtora, name='cadastro_produtora'),
+    path('editar_produtora/<int:id>/', editar_produtora, name='editar_produtora'),
+    path('remover_produtora/<int:id>/', remover_produtora, name='remover_produtora'),
 ]

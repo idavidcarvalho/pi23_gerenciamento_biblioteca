@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuario, Cargo, Autor, Editora, Classificacao
+from .models import Usuario, Cargo, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora
 from django.contrib.auth.forms import UserCreationForm
 
 class UsuarioForm(UserCreationForm):
@@ -25,4 +25,24 @@ class EditoraForm(forms.ModelForm):
 class ClassificacaoForm(forms.ModelForm):
     class Meta:
         model = Classificacao
+        fields = ['nome']
+
+class SecaoForm(forms.ModelForm):
+    class Meta:
+        model = Secao
+        fields = ['nome']
+
+class EstadoForm(forms.ModelForm):
+    class Meta:
+        model = Estado
+        fields = ['nome']
+
+class TipoPeriodicoForm(forms.ModelForm):
+    class Meta:
+        model = TipoPeriodico
+        fields = ['nome']
+
+class ProdutoraForm(forms.ModelForm):
+    class Meta:
+        model = Produtora
         fields = ['nome']

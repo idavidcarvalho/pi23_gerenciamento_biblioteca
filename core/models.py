@@ -86,7 +86,7 @@ class Livro(models.Model):
 
 # Define the `TipoPeriodico` model
 class TipoPeriodico(models.Model):
-    Nome = models.CharField(max_length=45)
+    nome = models.CharField(max_length=45)
 
     def __str__(self):
         return self.Nome
