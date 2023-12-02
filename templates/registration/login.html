@@ -1,17 +1,62 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autenticação</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
 </head>
 <body>
-        <form method="post">
+   
+         <!--<form method="post">
             {% csrf_token %}
             <p>Usuário: <br> <input type="text" name="usuario"></p>
             <p>Senha: <br> <input type="password" name="senha"></p>
             <input type="submit" value="Autenticar">
-        </form>
+        </form>-->
+       
+        <div class="container">
+            <main>
+                <div class="container-main">
+                    <div class="card-frase">
+                        <div class="frase-bg">
+                            <p class="fonte-bg">BiblioGest</p>
+                            <p class="fonte-bg-1">O sistema ideal para <br>gerenciar sua <br> biblioteca</p>
+                            <button class="saiba-mais">Saiba mais</button>
+                        </div>
+            
+                        <div class="img-login">
+                            <img src="{% static '/img/img-principal.png' %}" alt="" class="ilustracao-login">
+                        </div>
+                    </div>
+    
+                    <div class="login">
+                        <div class="logo-login">
+                             <img class= "logo-azul" src="{% static '/img/logo.png' %}" alt="">
+                        </div>
+                        
+                        <p class="nome-login">Login</p>
+                        <div class="form-container">
+                            <form method="post">
+                                {% csrf_token %}
+                                <label class="form-label" for="cpf" >USUÁRIO</label> <br>
+                                <div class="form-aut">
+                                    <input class="form-input" type="text" id="cpf" name="usuario"/>
+                                </div>
+                                <br>
+                                <label class="form-label" for="senha">SENHA</label> <br>
+                                <div class="form-aut">
+                                    <input class="form-input" type="password" id="senha" name="senha" />
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="bt-login">
+                            <input class="button-login" type="submit" value="AUTENTICAR">
+                        </div>
+                </div>
+            </main>    
 </body>
 </html>

@@ -9,6 +9,7 @@ from .models import Cargo, Autor, Editora, Classificacao, Secao, Estado, TipoPer
 def perfil(request):
     return render(request, 'perfil.html')
 
+#-------- Login -----
 def autenticar(request):
     if request.POST:
         usuario = request.POST['usuario']
