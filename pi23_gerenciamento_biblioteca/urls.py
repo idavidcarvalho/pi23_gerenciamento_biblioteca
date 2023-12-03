@@ -49,4 +49,9 @@ urlpatterns = [
     path('cadastro_produtora/', cadastro_produtora, name='cadastro_produtora'),
     path('editar_produtora/<int:id>/', editar_produtora, name='editar_produtora'),
     path('remover_produtora/<int:id>/', remover_produtora, name='remover_produtora'),
+
+    path('usuario/', usuario, name='usuario'),
+    path('cadastro_usuario/', cadastro_usuario, name='cadastro_usuario'),
+    path('editar_usuario/<int:id>/', editar_usuario, name='editar_usuario'),
+    path('remover_usuario/<int:id>/', remover_usuario, name='remover_usuario'),
 ]

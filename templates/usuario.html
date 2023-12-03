@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuário</title>
+</head>
+<body>
+    <h1>Lista de Usuários</h1>
+    <p><a href="{% url 'cadastro_usuario' %}">Adicionar um novo usuário</a></p>
+
+    {% for usuario in listar_usuario %}
+    <p>
+        Nome: {{ usuario.nome }} 
+        <a href="{% url 'editar_usuario' usuario.id %}">Editar</a>
+        <a href="{% url 'remover_usuario' usuario.id %}">Deletar</a>
+    </p>
+    {% empty %}
+    <p>Nenhum usuário cadastrado!</p>
+    {% endfor %}
+</body>
+</html>

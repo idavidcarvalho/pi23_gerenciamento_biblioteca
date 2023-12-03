@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import CargoForm, AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, ProdutoraForm
-from .models import Cargo, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora
+from .forms import CargoForm, AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, ProdutoraForm, UsuarioForm
+from .models import Cargo, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario
 
 @login_required
 def perfil(request):
@@ -307,3 +307,38 @@ def remover_produtora (request,id):
     produtora = Produtora.objects.get(pk=id)
     produtora.delete()
     return redirect('produtora')
+
+#---------- CRUD Usuário -----------
+
+def cadastro_usuario(request):
+    form = UsuarioForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('usuario')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'registration/cadastro_usuario.html', contexto)
+
+def usuario(request):
+    listar_usuario = Usuario.objects.all()
+    contexto = {
+        'listar_produtora': listar_usuario
+    }
+    return render(request, 'usuario.html', contexto)
+
+def editar_usuario(request, id):
+    usuario = Usuario.objects.get(pk=id)
+    form = UsuarioForm(request.POST or None, instance=usuario)
+    if form.is_valid():
+        form.save()
+        return redirect('usuario')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_usuario.html', contexto)
+
+def remover_usuario (request,id):
+    usuario = Usuario.objects.get(pk=id)
+    usuario.delete()
+    return redirect('usuario')
