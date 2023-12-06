@@ -323,7 +323,7 @@ def cadastro_usuario(request):
 def usuario(request):
     listar_usuario = Usuario.objects.all()
     contexto = {
-        'listar_produtora': listar_usuario
+        'listar_usuario': listar_usuario
     }
     return render(request, 'usuario.html', contexto)
 
