@@ -10,8 +10,12 @@
     <main>
         <p class="cadastro">CADASTRE UM NOVO USUÁRIO</p>
         <div class="form-leitor">
-            {% csrf_token %}
             <form method="post">
+                {% csrf_token %}
+
+                {{form.as_p}}
+                <input type="submit" value="Cadastrar">
+<!-- 
                 <label for="nome">NOME COMPLETO</label>
                 <div class="div-input">
                     {% render_field form.nome_completo class="div-input" %}
@@ -43,9 +47,9 @@
                     {% render_field form.email class="div-input" %}
                 </div>
 
-                <!-- <label for="endereco">ENDEREÇO</label>
+                <label for="endereco">ENDEREÇO</label>
                 <div class="div-input">
-                    {% render_field form.endereco class="div-input" %} -->
+                    {% render_field form.endereco class="div-input" %}
                 </div>
                 <label for="senha">SENHA</label>
                 <div class="div-input">
@@ -57,8 +61,8 @@
                 </div>
 
                 <div class="button">
-                    <button class="bt-cadastrar">CADASTRAR</button>
-                </div>
+                    <input type="submit" value="Cadastrar">
+                </div> -->
             </form>
         </div>
         </main>
