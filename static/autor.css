@@ -48,6 +48,11 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    
+}
+.button-novo a {
+    text-decoration: none;
+    color: white;
 }
 
 .button-novo:hover{

@@ -43,20 +43,18 @@
                         <a href="#"><img class="search-icon" src="/img/lupa.png"></a>
                     </form>
                 </div>
-
+                <div class="button-novo-container">
+                    <div class="button-novo">
+                        <div>
+                            <p><a href="{% url 'cadastro_autor' %}">NOVO</a></p>
+                        </div>
+                    </div>
+                </div>
                 {% for autor in listar_autor %}
                 <div class="container-tabela"> 
                     <div class="autor-container">
                         <div>
                             <p class="autor">Autores</p>
-                        </div>
-
-                        <div class="button-novo-container">
-                            <div class="button-novo">
-                                <div>
-                                    <p><a href="{% url 'cadastro_autor' %}">NOVO</a></p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div>
@@ -72,10 +70,10 @@
                                     <a href="{% url 'remover_autor' autor.id %}" class="bt-editar-ex">Deletar</a>
                                 </td>
                             </tr>
-                            {% empty %}
                         </table>
                     </div>
                 </div>
+                {% empty %}
                 <p>Nenhum autor cadastrado!</p>
                 {% endfor %}
             </main>
