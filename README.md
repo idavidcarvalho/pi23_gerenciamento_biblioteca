@@ -5,6 +5,7 @@ O BiblioGest é um projeto dedicado ao desenvolvimento de um sistema de gerencia
 ## Contexto
 Baseado em um estudo de caso conduzido na Biblioteca Pública Municipal Professora Maria Simonetti Gadelha Grilo, localizada na cidade de Goianinha/RN, identificamos desafios significativos enfrentados pelos funcionários, especialmente em relação a tarefas como controle do acervo bibliográfico e gerenciamento de empréstimos. Esses desafios motivaram a criação do BiblioGest como uma resposta concreta para melhorar a eficiência operacional dessas instituições.
 
+<img src="static/img/printscreen.png"  alt="Foto do Sistema"/>
 
 ## Tecnologias
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
