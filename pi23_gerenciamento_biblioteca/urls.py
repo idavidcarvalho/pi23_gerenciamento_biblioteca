@@ -54,4 +54,9 @@ urlpatterns = [
     path('cadastro_usuario/', cadastro_usuario, name='cadastro_usuario'),
     path('editar_usuario/<int:id>/', editar_usuario, name='editar_usuario'),
     path('remover_usuario/<int:id>/', remover_usuario, name='remover_usuario'),
+
+    path('livro/', livro, name='livro'),
+    path('cadastro_livro/', cadastro_livro, name='cadastro_livro'),
+    path('editar_livro/<int:registro>/', editar_livro, name='editar_livro'),
+    path('remover_livro/<int:registro>/', remover_livro, name='remover_livro')
 ]

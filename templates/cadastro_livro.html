@@ -1,0 +1,99 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+</head>
+<body>
+    <div class="container">
+        <main>
+        <p class="cadastro">CADASTRE UM NOVO LIVRO</p>
+        <div class="form-leitor">
+            <form method="post">
+                {% csrf_token %}
+                <label for="nome">AUTOR
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                    </svg>
+                </label> 
+
+                    {% render_field form.autor class="input-emprego" %}
+               
+
+                <label for="nome">TÍTULO</label>
+                {% render_field form.titulo class="div-input" %}
+                <div class="form-emprego"> 
+                    <div class="profissao">
+                        <label for="">EDITORA
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            </svg>
+                        </label> <br>
+                        {% render_field form.editora class="input-emprego" %}
+                    </div>
+            
+                    <div class="profissao">
+                        <label for="">ESTADO</label> <br>
+                        {% render_field form.estado class="input-emprego" %}
+                    </div>
+                </div>
+
+                <div class="form-emprego">    
+                    <div class="profissao">
+                        <label>NÚMERO DE REGISTRO
+                        </label> <br>
+                        {% render_field form.registro class="div-input" %}
+                    </div>
+            
+                    <div class="profissao">
+                        <label for="">NÚMERO DE PÁGINAS</label> <br>
+                        {% render_field form.paginas class="div-input" %}
+                    </div>
+                </div>
+
+                <div class="form-emprego">
+                    
+                    <div class="profissao">
+                        <label for="">EDIÇÃO
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            </svg>
+                        </label> <br>
+                        {% render_field form.edicao class="div-input" %}
+                    </div>
+                    <div class="profissao">
+                        <label for="">CLASSIFICAÇÃO
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            </svg>
+                        </label> <br>
+                        {% render_field form.classificacao class="input-emprego" %}
+                    </div>
+                </div>
+
+                <div class="form-emprego">
+                    
+                    <div class="profissao">
+                        <label for="">DATA DE LANÇAMENTO</label> <br>
+                        {% render_field form.dataLancamento class="div-input" %}
+                    </div>
+            
+                    <div class="profissao">
+                        <label for="">SESSÃO</label> <br>
+                        {% render_field form.secao class="div-input" %}
+                    </div>
+                </div>
+                <div class="button">
+                    <button class="bt-cadastrar">CADASTRAR</button>
+                </div>
+            </form>
+        </div>
+        </main>
+    </div>
+</body>
+</html>

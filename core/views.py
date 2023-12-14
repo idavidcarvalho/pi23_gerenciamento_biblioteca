@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import CargoForm, AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, ProdutoraForm, UsuarioForm
-from .models import Cargo, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario
+from .forms import CargoForm, AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm
+from .models import Cargo, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro
 
 @login_required
 def perfil(request):
@@ -342,3 +342,38 @@ def remover_usuario (request,id):
     usuario = Usuario.objects.get(pk=id)
     usuario.delete()
     return redirect('usuario')
+
+# -------------- CRUD Livro ----------
+
+def cadastro_livro(request):
+    form = LivroForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('livro')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_livro.html', contexto)
+
+def livro(request):
+    listar_livro = Livro.objects.all()
+    contexto = {
+        'listar_livro': listar_livro
+    }
+    return render(request, 'livro.html', contexto)
+
+def editar_livro(request, registro):
+    livro = Livro.objects.get(pk=registro)
+    form = LivroForm(request.POST or None, instance=livro)
+    if form.is_valid():
+        form.save()
+        return redirect('livro')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_livro.html', contexto)
+
+def remover_livro (request,registro):
+    livro = Livro.objects.get(pk=registro)
+    livro.delete()
+    return redirect('livro')
