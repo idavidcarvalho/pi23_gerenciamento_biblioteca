@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-from .forms import CargoForm, AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm
-from .models import Cargo, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro
+from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
+from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm
+from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro
+from django.contrib.auth.models import Permission
+
+def permissaoCoodenadorBibliotecario(Usuario):
+    return user_passes_test('core.coordenador') or user_passes_test('core.bibliotecario')
 
 @login_required
 def perfil(request):
@@ -30,76 +34,10 @@ def desconectar(request):
 def index(request):
     return render(request, 'index.html')
 
-#-------- CRUD Cargo -----
-
-def cadastro_cargo(request):
-    form = CargoForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('cargos')
-    contexto = {
-        'form': form
-    }
-    return render(request, 'cadastro_cargo.html', contexto)
-
-def cargo(request):
-    listar_cargos = Cargo.objects.all()
-    contexto = {
-        'listar_cargos': listar_cargos
-    }
-    return render(request, 'cargo.html', contexto)
-
-def editar_cargo(request, id):
-    cargo = Cargo.objects.get(pk=id)
-    form = CargoForm(request.POST or None, instance=cargo)
-    if form.is_valid():
-        form.save()
-        return redirect('cargos')
-    contexto = {
-        'form': form
-    }
-    return render(request, 'cadastro_cargo.html', contexto)
-
-def remover_cargo (request,id):
-    cargo = Cargo.objects.get(pk=id)
-    cargo.delete()
-    return redirect('cargos')
-
-# ------- CRUD Autor -------
-def cadastro_autor(request):
-    form = AutorForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('autor')
-    contexto = {
-        'form': form
-    }
-    return render(request, 'cadastro_autor.html', contexto)
-
-def autor(request):
-    listar_autor = Autor.objects.all()
-    contexto = {
-        'listar_autor': listar_autor
-    }
-    return render(request, 'autor.html', contexto)
-
-def editar_autor(request, id):
-    autor = Autor.objects.get(pk=id)
-    form = AutorForm(request.POST or None, instance=autor)
-    if form.is_valid():
-        form.save()
-        return redirect('autor')
-    contexto = {
-        'form': form
-    }
-    return render(request, 'cadastro_autor.html', contexto)
-
-def remover_autor (request,id):
-    autor = Autor.objects.get(pk=id)
-    autor.delete()
-    return redirect('autor')
 
 # -------- CRUD Editora -----------
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_editora(request):
     form = EditoraForm(request.POST or None)
     if form.is_valid():
@@ -110,6 +48,7 @@ def cadastro_editora(request):
     }
     return render(request, 'cadastro_editora.html', contexto)
 
+@login_required
 def editora(request):
     listar_editora = Editora.objects.all()
     contexto = {
@@ -117,6 +56,8 @@ def editora(request):
     }
     return render(request, 'editora.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def editar_editora(request, id):
     editora = Editora.objects.get(pk=id)
     form = EditoraForm(request.POST or None, instance=editora)
@@ -128,13 +69,16 @@ def editar_editora(request, id):
     }
     return render(request, 'cadastro_editora.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def remover_editora (request,id):
     editora = Editora.objects.get(pk=id)
     editora.delete()
     return redirect('editora')
 
 # ------ CRUD Classificação -----------
-
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_classificacao(request):
     form = ClassificacaoForm(request.POST or None)
     if form.is_valid():
@@ -145,6 +89,7 @@ def cadastro_classificacao(request):
     }
     return render(request, 'cadastro_classificacao.html', contexto)
 
+@login_required
 def classificacao(request):
     listar_classificacao = Classificacao.objects.all()
     contexto = {
@@ -152,6 +97,8 @@ def classificacao(request):
     }
     return render(request, 'classificacao.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def editar_classificacao(request, id):
     classificacao = Classificacao.objects.get(pk=id)
     form = ClassificacaoForm(request.POST or None, instance=classificacao)
@@ -163,13 +110,16 @@ def editar_classificacao(request, id):
     }
     return render(request, 'cadastro_classificacao.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def remover_classificacao (request,id):
     classificacao = Classificacao.objects.get(pk=id)
     classificacao.delete()
     return redirect('classificacao')
 
 #--------- CRUD Seção ------------
-
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_secao(request):
     form = SecaoForm(request.POST or None)
     if form.is_valid():
@@ -180,6 +130,7 @@ def cadastro_secao(request):
     }
     return render(request, 'cadastro_secao.html', contexto)
 
+@login_required
 def secao(request):
     listar_secao = Secao.objects.all()
     contexto = {
@@ -187,6 +138,8 @@ def secao(request):
     }
     return render(request, 'secao.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def editar_secao(request, id):
     secao = Secao.objects.get(pk=id)
     form = SecaoForm(request.POST or None, instance=secao)
@@ -198,6 +151,8 @@ def editar_secao(request, id):
     }
     return render(request, 'cadastro_secao.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def remover_secao (request,id):
     secao = Secao.objects.get(pk=id)
     secao.delete()
@@ -239,7 +194,8 @@ def remover_estado (request,id):
     return redirect('estado')
 
 # -------------- CRUD Tipo de Periódico ----------
-
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_tipo_periodico(request):
     form = TipoPeriodicoForm(request.POST or None)
     if form.is_valid():
@@ -250,6 +206,7 @@ def cadastro_tipo_periodico(request):
     }
     return render(request, 'cadastro_tipo_periodico.html', contexto)
 
+@login_required
 def tipo_periodico(request):
     listar_tipo_periodico = TipoPeriodico.objects.all()
     contexto = {
@@ -257,6 +214,8 @@ def tipo_periodico(request):
     }
     return render(request, 'tipo_periodico.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def editar_tipo_periodico(request, id):
     tipo_periodico = TipoPeriodico.objects.get(pk=id)
     form = TipoPeriodicoForm(request.POST or None, instance=tipo_periodico)
@@ -268,13 +227,16 @@ def editar_tipo_periodico(request, id):
     }
     return render(request, 'cadastro_tipo_periodico.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def remover_tipo_periodico (request,id):
     tipo_periodico = TipoPeriodico.objects.get(pk=id)
     tipo_periodico.delete()
     return redirect('tipo_periodico')
 
 #------------ CRUD Produtora ----------
-
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_produtora(request):
     form = ProdutoraForm(request.POST or None)
     if form.is_valid():
@@ -285,6 +247,7 @@ def cadastro_produtora(request):
     }
     return render(request, 'cadastro_produtora.html', contexto)
 
+@login_required
 def produtora(request):
     listar_produtora = Produtora.objects.all()
     contexto = {
@@ -292,6 +255,8 @@ def produtora(request):
     }
     return render(request, 'produtora.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def editar_produtora(request, id):
     produtora = Produtora.objects.get(pk=id)
     form = ProdutoraForm(request.POST or None, instance=produtora)
@@ -303,23 +268,41 @@ def editar_produtora(request, id):
     }
     return render(request, 'cadastro_produtora.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def remover_produtora (request,id):
     produtora = Produtora.objects.get(pk=id)
     produtora.delete()
     return redirect('produtora')
 
 #---------- CRUD Usuário -----------
-
+@login_required
+@permission_required('core.coordenador')
 def cadastro_usuario(request):
     form = UsuarioForm(request.POST or None)
     if form.is_valid():
-        form.save()
-        return redirect('usuario')
+       usuario = form.save(commit=False)
+       usuario.save()
+    
+       #Alterando permissão
+
+       # Recupera a permissão selecionada
+       permissao_selecionada = request.POST['permissao']
+
+       # Recupara a permissão selcioanda no BD
+       permissao = Permission.objects.get(codename = permissao_selecionada)
+        
+       # Adcionar permissão ao usuario que está sendo cadastrado
+       usuario.user_permissions.add(permissao)
+       usuario.save()
+       return redirect('login')
     contexto = {
         'form': form
     }
     return render(request, 'registration/cadastro_usuario.html', contexto)
 
+@login_required
+@permission_required('core.coordenador')
 def usuario(request):
     listar_usuario = Usuario.objects.all()
     contexto = {
@@ -327,6 +310,8 @@ def usuario(request):
     }
     return render(request, 'usuario.html', contexto)
 
+@login_required
+@permission_required('core.coordenador')
 def editar_usuario(request, id):
     usuario = Usuario.objects.get(pk=id)
     form = UsuarioForm(request.POST or None, instance=usuario)
@@ -338,13 +323,16 @@ def editar_usuario(request, id):
     }
     return render(request, 'cadastro_usuario.html', contexto)
 
+@login_required
+@permission_required('core.coordenador')
 def remover_usuario (request,id):
     usuario = Usuario.objects.get(pk=id)
     usuario.delete()
     return redirect('usuario')
 
 # -------------- CRUD Livro ----------
-
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_livro(request):
     form = LivroForm(request.POST or None)
     if form.is_valid():
@@ -355,6 +343,7 @@ def cadastro_livro(request):
     }
     return render(request, 'cadastro_livro.html', contexto)
 
+@login_required
 def livro(request):
     listar_livro = Livro.objects.all()
     contexto = {
@@ -362,6 +351,8 @@ def livro(request):
     }
     return render(request, 'livro.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def editar_livro(request, registro):
     livro = Livro.objects.get(pk=registro)
     form = LivroForm(request.POST or None, instance=livro)
@@ -373,6 +364,8 @@ def editar_livro(request, registro):
     }
     return render(request, 'cadastro_livro.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def remover_livro (request,registro):
     livro = Livro.objects.get(pk=registro)
     livro.delete()

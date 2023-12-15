@@ -1,13 +1,6 @@
 from django.db import models, IntegrityError, transaction
 from django.contrib.auth.models import AbstractUser
 
-
-class Cargo(models.Model):
-    nome = models.CharField(max_length=45)
-
-    def __str__(self):
-        return self.nome
-
 class Usuario(AbstractUser):
     cpf = models.CharField('CPF', max_length=11, unique=True)
     rg = models.CharField('RG', max_length=14, unique=True)
@@ -15,12 +8,18 @@ class Usuario(AbstractUser):
     data_nascimento = models.DateField('Data de Nascimento', null=True)
     email = models.CharField('Email:', max_length=100, null=False)
     telefone = models.CharField('Telefone:', max_length=11, null= False)
-    cargo = models.ForeignKey(Cargo, on_delete=models.CASCADE, null=True)
     foto = models.BinaryField(null=True)
     status = models.CharField(max_length=45,choices=[('ativo', 'Ativo'), ('inativo', 'Inativo')], default='ativo')
     USERNAME_FIELD = 'cpf'
     REQUIRED_FIELDS = ['username']
 
+    class Meta:
+        permissions = [
+            ('coordenador','Poderá gerenciar acervo, empréstimos, leitores e funcionários'),
+            ('bibliotecario','Poderá gerenciar acervo, empréstimos e leitores'),
+            ('auxiliar','Poderá gerenciar empréstimos e leitores'),
+
+        ]
     def __str__(self):
         return self.nome_completo
 
