@@ -1,16 +1,11 @@
 from django import forms
-from .models import Usuario, Cargo, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Livro
+from .models import Usuario, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Livro
 from django.contrib.auth.forms import UserCreationForm
 
 class UsuarioForm(UserCreationForm):
     class Meta:
         model = Usuario
         fields = ['username', 'cpf', 'rg', 'email','telefone', 'nome_completo', 'data_nascimento', 'password1',]
-
-class CargoForm(forms.ModelForm):
-    class Meta:
-        model = Cargo
-        fields = ['nome']
 
 class AutorForm(forms.ModelForm):
     class Meta:
