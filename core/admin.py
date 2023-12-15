@@ -1,9 +1,7 @@
 from django.contrib import admin
-from .models import Cargo, Usuario, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Livro, Periodico, Hemeroteca, Multimidia, Leitor, Emprestimo 
+from .models import  Usuario, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Livro, Periodico, Hemeroteca, Multimidia, Leitor, Emprestimo 
 
-@admin.register(Cargo)
-class CargoAdmin(admin.ModelAdmin):
-    ...
+
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
     ...

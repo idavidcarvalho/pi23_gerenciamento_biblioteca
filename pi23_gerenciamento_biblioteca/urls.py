@@ -10,15 +10,11 @@ urlpatterns = [
     path('login/', desconectar, name='logout'),
     path('index/', index),
 
-    path('cargos/', cargo, name='cargos'),
-    path('cadastro_cargo/', cadastro_cargo, name='cadastro_cargo'),
-    path('editar_cargo/<int:id>/', editar_cargo, name='editar_cargo'),
-    path('remover_cargo/<int:id>/', remover_cargo, name='remover_cargo'),
 
-    path('autor/', autor, name='autor'),
-    path('cadastro_autor/', cadastro_autor, name='cadastro_autor'),
-    path('editar_autor/<int:id>/', editar_autor, name='editar_autor'),
-    path('remover_autor/<int:id>/', remover_autor, name='remover_autor'),
+    # path('autor/', autor, name='autor'),
+    # path('cadastro_autor/', cadastro_autor, name='cadastro_autor'),
+    # path('editar_autor/<int:id>/', editar_autor, name='editar_autor'),
+    # path('remover_autor/<int:id>/', remover_autor, name='remover_autor'),
      
     path('editora/', editora, name='editora'),
     path('cadastro_editora/', cadastro_editora, name='cadastro_editora'),
