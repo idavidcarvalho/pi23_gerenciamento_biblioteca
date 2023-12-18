@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuario, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Livro
+from .models import Usuario, Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Livro, Periodico
 from django.contrib.auth.forms import UserCreationForm
 
 class UsuarioForm(UserCreationForm):
@@ -46,3 +46,8 @@ class LivroForm(forms.ModelForm):
     class Meta:
         model = Livro
         fields = ['titulo', 'registro', 'paginas', 'edicao', 'dataLancamento', 'status', 'autor', 'editora', 'classificacao', 'secao', 'estado', 'criado_por']
+
+class PeriodicoForm(forms.ModelForm):
+    class Meta:
+        model = Periodico
+        fields = ['registro', 'titulo', 'numero', 'tipoPeriodico', 'status', 'autor', 'editora', 'secao', 'criado_por']

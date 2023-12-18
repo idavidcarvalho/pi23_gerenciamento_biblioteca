@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
-from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm
-from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro
+from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm, PeriodicoForm
+from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro, Periodico
 from django.contrib.auth.models import Permission
 
 def permissaoCoodenadorBibliotecario(Usuario):
@@ -275,6 +275,47 @@ def remover_produtora (request,id):
     produtora.delete()
     return redirect('produtora')
 
+# ------- CRUD Autor -------
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def cadastro_autor(request):
+    form = AutorForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('autor')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_autor.html', contexto)
+
+@login_required
+def autor(request):
+    listar_autor = Autor.objects.all()
+    contexto = {
+        'listar_autor': listar_autor
+    }
+    return render(request, 'autor.html', contexto)
+
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def editar_autor(request, id):
+    autor = Autor.objects.get(pk=id)
+    form = AutorForm(request.POST or None, instance=autor)
+    if form.is_valid():
+        form.save()
+        return redirect('autor')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_autor.html', contexto)
+
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def remover_autor (request,id):
+    autor = Autor.objects.get(pk=id)
+    autor.delete()
+    return redirect('autor')
+
 #---------- CRUD Usuário -----------
 @login_required
 @permission_required('core.coordenador')
@@ -370,3 +411,44 @@ def remover_livro (request,registro):
     livro = Livro.objects.get(pk=registro)
     livro.delete()
     return redirect('livro')
+
+#----------- CRUD Periódico ------------
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def cadastro_periodico(request):
+    form = PeriodicoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('periodico')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_periodico.html', contexto)
+
+@login_required
+def periodico(request):
+    listar_periodico = Periodico.objects.all()
+    contexto = {
+        'listar_periodico': listar_periodico
+    }
+    return render(request, 'periodico.html', contexto)
+
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def editar_periodico(request, registro):
+    periodico = Periodico.objects.get(pk=registro)
+    form = PeriodicoForm(request.POST or None, instance=periodico)
+    if form.is_valid():
+        form.save()
+        return redirect('periodico')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'periodico_livro.html', contexto)
+
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def remover_periodico (request, registro):
+    periodico = Periodico.objects.get(pk=registro)
+    periodico.delete()
+    return redirect('periodico')

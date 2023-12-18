@@ -11,10 +11,10 @@ urlpatterns = [
     path('index/', index),
 
 
-    # path('autor/', autor, name='autor'),
-    # path('cadastro_autor/', cadastro_autor, name='cadastro_autor'),
-    # path('editar_autor/<int:id>/', editar_autor, name='editar_autor'),
-    # path('remover_autor/<int:id>/', remover_autor, name='remover_autor'),
+    path('autor/', autor, name='autor'),
+    path('cadastro_autor/', cadastro_autor, name='cadastro_autor'),
+    path('editar_autor/<int:id>/', editar_autor, name='editar_autor'),
+    path('remover_autor/<int:id>/', remover_autor, name='remover_autor'),
      
     path('editora/', editora, name='editora'),
     path('cadastro_editora/', cadastro_editora, name='cadastro_editora'),
@@ -54,5 +54,10 @@ urlpatterns = [
     path('livro/', livro, name='livro'),
     path('cadastro_livro/', cadastro_livro, name='cadastro_livro'),
     path('editar_livro/<int:registro>/', editar_livro, name='editar_livro'),
-    path('remover_livro/<int:registro>/', remover_livro, name='remover_livro')
+    path('remover_livro/<int:registro>/', remover_livro, name='remover_livro'),
+
+    path('periodico/', periodico, name='periodico'),
+    path('cadastro_periodico/', cadastro_periodico, name='cadastro_periodico'),
+    path('editar_periodico/<int:registro>/', editar_periodico, name='editar_periodico'),
+    path('remover_periodico/<int:registro>/', remover_periodico, name='remover_periodico'),
 ]
