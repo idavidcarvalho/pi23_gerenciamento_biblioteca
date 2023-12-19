@@ -50,6 +50,10 @@
                         </label> <br>
                         {% render_field form.registro class="div-input" %}
                     </div>
+                    <div class="profissao">
+                        <label for="">EDITORA</label> <br>
+                        {% render_field form.editora class="div-input" %}
+                    </div>
                 </div>
 
                 <div class="form-emprego">
@@ -63,9 +67,11 @@
                         {% render_field form.criado_por class="div-input" %}
                     </div>
                 </div>
-                
+                <div hidden>
+                {% render_field form.status class="div-input" %}
+                </div>
                 <div class="button">
-                    <button class="bt-cadastrar">CADASTRAR</button>
+                    <input type="submit" value="CADASTRAR" class="bt-cadastrar">
                 </div>
             </form>
         </div>
