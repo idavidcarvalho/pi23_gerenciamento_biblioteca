@@ -13,6 +13,9 @@ def permissaoCoodenadorBibliotecario(Usuario):
 def perfil(request):
     return render(request, 'perfil.html')
 
+def conta(request):
+    return render(request, 'minha_conta.html')
+
 #-------- Login -----
 def autenticar(request):
     if request.POST:
@@ -30,10 +33,6 @@ def autenticar(request):
 def desconectar(request):
     logout(request)
     return redirect('login')
-
-def index(request):
-    return render(request, 'index.html')
-
 
 # -------- CRUD Editora -----------
 @login_required

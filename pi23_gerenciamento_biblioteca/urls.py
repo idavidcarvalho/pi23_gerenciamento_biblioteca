@@ -8,8 +8,7 @@ urlpatterns = [
     path('perfil/', perfil, name='perfil'),
     path('', autenticar, name= 'login'),
     path('login/', desconectar, name='logout'),
-    path('index/', index),
-
+    path('minha_conta/', conta, name="minha_conta"),
 
     path('autor/', autor, name='autor'),
     path('cadastro_autor/', cadastro_autor, name='cadastro_autor'),
@@ -50,7 +49,7 @@ urlpatterns = [
     path('cadastro_usuario/', cadastro_usuario, name='cadastro_usuario'),
     path('editar_usuario/<int:id>/', editar_usuario, name='editar_usuario'),
     path('remover_usuario/<int:id>/', remover_usuario, name='remover_usuario'),
-
+    
     path('livro/', livro, name='livro'),
     path('cadastro_livro/', cadastro_livro, name='cadastro_livro'),
     path('editar_livro/<int:registro>/', editar_livro, name='editar_livro'),
