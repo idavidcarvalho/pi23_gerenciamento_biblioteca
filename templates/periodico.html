@@ -1,24 +1,112 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Periódicos</title>
 </head>
 <body>
-    <h1>Lista - Periódicos</h1>
-    <p><a href="{% url 'cadastro_periodico' %}">Adicionar um novo Periódico</a></p>
 
-    {% for periodico in listar_periodico %}
-    <p>
-        Nome: {{ periodico.titulo }} 
-       
-        <a href="{% url 'editar_periodico' periodico.registro %}">Editar</a>
-        <a href="{% url 'remover_periodico' periodico.registro %}">Deletar</a>
-        
-    </p>
-    {% empty %}
-    <p>Nenhum periódico cadastrado!</p>
-    {% endfor %}
+    <body id="body-pd">
+        <header class="header" id="header">
+          <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        </header>
+        <div class="l-navbar" id="nav-bar">
+          <nav class="nav">
+            <div> 
+                <a href="#" class="nav_logo">
+                  <h5 class="nav_logo-name">BiblioGest</h5>
+                </a>
+                <div class="nav_list"> 
+                  <a href="#" class="nav_link active"> 
+                    <i class='bx bxs-home nav_icon'></i> 
+                      <spanclass="nav_name">INÍCIO</spanclass=> </a> 
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bxs-group nav_icon'></i> 
+                    <span class="nav_name">FUNCIONÁRIOS</span> 
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bxs-book-reader nav_icon'></i>
+                    <span class="nav_name">LEITORES</span>
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bxs-book nav_icon'></i>
+                    <span class="nav_name">ACERVO</span>
+                  </a>      
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bx-repost nav_icon'></i>
+                    <span class="nav_name">EMPRÉSTIMOS</span> 
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bx-user nav_icon'></i>
+                <span class="nav_name">MINHA CONTA</span> 
+                 </div>
+            </div> 
+            <a href="#" class="nav_link"> 
+              <i class='bx bx-log-out nav_icon'></i> 
+              <span class="nav_name">Sair</span> 
+            </a>
+          </nav>
+        </div>
+    
+    
+    
+        <!--Container Main start-->
+        <div class="height-100">
+            <h1 class="fonte">Periódicos</h1>   
+            <p><a href="{% url 'cadastro_periodico' %}">Adicionar um novo Periódico</a></p>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class=" bg-primary fonte ">Registro</th>
+                <th scope="col" class=" bg-primary fonte">Título</th>
+                <th scope="col" class=" bg-primary fonte">Tipo</th>
+                <th scope="col" class=" bg-primary fonte">Nº</th>
+                <th scope="col" class=" bg-primary fonte">Autor</th>
+                <th scope="col" class=" bg-primary fonte">Seção</th>
+                <th scope="col" class=" bg-primary fonte">Editora</th>
+                <th scope="col" class=" bg-primary fonte">Status</th>
+                <th scope="col" class=" bg-primary fonte">Cadastrado por</th>
+                <th scope="col" class=" bg-primary fonte">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for periodico in listar_periodico %}
+              <tr>
+                <th scope="row">{{periodico.registro}}</th>
+                <td>{{ periodico.titulo }}</td>
+                <td>{{ periodico.tipoPeriodico }}</td>
+                <td>{{periodico.numero}}</td>
+                <td>{{periodico.autor}}</td>
+                <td>{{periodico.secao}}</td>
+                <td>{{periodico.editora}}</td>
+                <td>{{periodico.status}}</td>
+                <td>{{periodico.criado_por}}</td>
+                <td>
+                    <a href="{% url 'editar_periodico' periodico.registro %}">Editar</a>
+                    |
+                    <a href="{% url 'remover_periodico' periodico.registro %}">Deletar</a>
+                </td>
+              </tr>
+              {% empty %}
+              <p>Nenhum periódico cadastrado!</p>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    
+  
+
+    <script
+    src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+  <script src="{% static 'js/script.js' %}"> </script>
+  <script src="{% static 'js/scriptLink.js' %}"></script>
 </body>
 </html>
