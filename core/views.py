@@ -443,7 +443,7 @@ def editar_periodico(request, registro):
     contexto = {
         'form': form
     }
-    return render(request, 'periodico_livro.html', contexto)
+    return render(request, 'cadastro_periodico.html', contexto)
 
 @login_required
 @user_passes_test(permissaoCoodenadorBibliotecario)
