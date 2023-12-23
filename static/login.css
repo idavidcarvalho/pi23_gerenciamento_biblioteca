@@ -6,6 +6,7 @@ body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    overflow: hidden;
   }
 
 .container {
@@ -42,6 +43,7 @@ main {
     margin-bottom: 20px;
     border-radius: 8px;
     width: 45%;
+    height: 82%;
 }
 
 .form-container{
@@ -105,12 +107,13 @@ main {
 .button-login{
     color: white;
     background-color:#4778EC;
-    width: 18%;
+    width: 30%;
     height: 15%;
     border: none;
     border-radius: 7px;
     font-family:League Spartan;
     font-size: 16px;
+    margin-top: 20px;
 }
 
 .button-login:hover {
@@ -119,10 +122,11 @@ main {
     cursor: pointer;
   } 
 
-.fonte-bg{
+  .fonte-bg{
     font-size: 90px;
     color: white;
     font-family: Anton;
+    margin-top: 30px;
 }
 .fonte-bg-1{
     font-size: 30px;
@@ -135,7 +139,7 @@ main {
 }
 
 .ilustracao-login{
-    width: 500px;
+    width: 58%;
     margin-left: 40px;
 }
 
@@ -155,10 +159,10 @@ main {
 
 .saiba-mais{
     padding: 10px;
-    background-color:  #4778EC;
     color: white;
     border-radius: 8px;
     border: none;
+    background-color: #4778EC;
 }
 
 .saiba-mais:hover{
@@ -168,9 +172,23 @@ main {
 
 .img-login{
     margin-top: 20px;
-    display: flex;
     align-items: center;
-    justify-content: center;
+    display: flex;
+    justify-content: end;
+    width: 90%;
+    height: 35%;
+}
+
+.senha{
+    width: 104%;
+    height: 40px;
+    display: flex;
+    justify-content: end;
+}
+
+.senha-p{
+    color: black;
+    font-family: League Spartan;
 }
 
 @media  screen and (max-width:1319px) {

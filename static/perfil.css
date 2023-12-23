@@ -3,6 +3,7 @@
 *{
     padding: 0;
     margin: 0;
+    overflow: hidden;
   }
 
 .container{
@@ -21,7 +22,7 @@
     width: 95%;
     display: flex;
     margin-top: 30px;
-    margin-left: 50px;
+    margin-left: 30px;
     justify-content: space-between;
 }
 
@@ -33,14 +34,20 @@
     margin-left: 40px;
 }
 
-.username{
-    font-size: 15px;
-}
-
 .img-logo{
     width: 280px;
 }
 
+.username{
+    font-size: 20px;
+    font-family: League Spartan;
+}
+
+.conta-p{
+    margin-left: 8px;
+    font-family: League Spartan;
+    font-size: 15px;
+}
 .conta{
     flex: end;
     width: 14%;
@@ -84,7 +91,7 @@ svg{
 }
 .nome-biblioteca{
     background-color: #4778EC;
-    margin-left: 50px;
+    margin-left: 30px;
     margin-top: 60px;
     width: 95%;
     height: 130px;
@@ -116,7 +123,7 @@ svg{
 }
 .cards{
     height: 280px;
-    margin-left: 50px;
+    margin-left: 30px;
     margin-top: 120px;
     display: flex;
     gap: 89px;
@@ -125,6 +132,7 @@ svg{
 .card-categorias{
     background-color: #022978;
     width: 20%;
+    height: 80%;
     border-radius: 8px;
     color: white;
     font-family: League Spartan;

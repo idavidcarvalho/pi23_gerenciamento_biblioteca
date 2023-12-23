@@ -36,7 +36,6 @@
                     <div class="form-container">
                         <form method="post">
                             {% csrf_token %}
-
                             <div class="form-aut">
                                 <label class="form-label" for="cpf">CPF</label>
                                 <input class="form-input" type="text" id="cpf" name="usuario" />
@@ -46,13 +45,15 @@
                                 <label class="form-label" for="senha">SENHA</label>
                                 <input class="form-input" type="password" id="senha" name="senha" />
                             </div>
+                            <div class="senha">
+                                <p><a class="senha-p" href="">esqueci minha senha</a></p>
+                            </div>
+
                             <div class="bt-login">
                                 <input class="button-login" type="submit" value="ENTRAR">
                             </div>
                         </form>
                     </div>
-
-
                 </div>
         </main>
 </body>

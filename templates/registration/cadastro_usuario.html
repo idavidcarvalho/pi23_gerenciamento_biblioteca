@@ -18,12 +18,11 @@
                 {% csrf_token %}
 
                 <label for="nome">NOME</label>
-                <div class="div-input">
-                    {% render_field form.nome class="nome-input" %}
+                <div class="input-nome">
+                    {% render_field form.cpf class="nome-input" %}
                 </div>
 
                 <div class="form-emprego">
-                    
                     <div class="profissao">
                         <label for="cpf">CPF</label> <br>
                         {% render_field form.cpf class="input-emprego" %}
@@ -36,8 +35,8 @@
                 </div>
 
                 <label for="nome">E-MAIL</label>
-                <div class="div-input">
-                    {% render_field form.nome class="nome-input" %}
+                <div class="input-nome">
+                    {% render_field form.email class="nome-input" %}
                 </div>
 
                 <div class="form-emprego">
