@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemeroteca</title>
+</head>
+<body>
+    <h1>Lista de hemerotecas</h1>
+    <p><a href="{% url 'cadastro_hemeroteca' %}">Adicionar uma hemeroteca</a></p>
+
+    {% for hemeroteca in listar_hemeroteca %}
+    <p>
+        {{ hemeroteca.registro }} |
+        {{ hemeroteca.assunto }} |
+        <a href="{% url 'editar_hemeroteca' hemeroteca.registro %}">Editar</a> |
+        <a href="{% url 'remover_hemeroteca' hemeroteca.registro %}">Deletar</a>
+    </p>
+    {% endfor %}
+</body>
+</html>

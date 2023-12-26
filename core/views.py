@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
-from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm, PeriodicoForm
-from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro, Periodico
+from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm, PeriodicoForm, HemerotecaForm
+from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro, Periodico, Emprestimo, Hemeroteca, Leitor, Multimidia
 from django.contrib.auth.models import Permission
 
 def permissaoCoodenadorBibliotecario(Usuario):
@@ -451,3 +451,44 @@ def remover_periodico (request, registro):
     periodico = Periodico.objects.get(pk=registro)
     periodico.delete()
     return redirect('periodico')
+
+# CRUD Hemeroteca
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def cadastro_hemeroteca(request):
+    form = HemerotecaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('hemeroteca')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_hemeroteca.html', contexto)
+
+@login_required
+def hemeroteca(request):
+    listar_hemeroteca = Hemeroteca.objects.all()
+    contexto = {
+        'listar_hemeroteca': listar_hemeroteca
+    }
+    return render(request, 'hemeroteca.html', contexto)
+
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def editar_hemeroteca(request, registro):
+    hemeroteca = Hemeroteca.objects.get(pk=registro)
+    form = HemerotecaForm(request.POST or None, instance=hemeroteca)
+    if form.is_valid():
+        form.save()
+        return redirect('hemeroteca')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_hemeroteca.html', contexto)
+
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def remover_hemeroteca (request, registro):
+    hemeroteca = Hemeroteca.objects.get(pk=registro)
+    hemeroteca.delete()
+    return redirect('hemeroteca')
