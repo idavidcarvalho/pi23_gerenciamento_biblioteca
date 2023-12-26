@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimídias</title>
+</head>
+<body>
+    <h1>Lista de Multimídias</h1>
+    <p><a href="{% url 'cadastro_multimidia' %}">Adicionar uma multimídia</a></p>
+
+    {% for multimidia in listar_multimidia %}
+        <p>
+            {{multimidia.registro}} |
+            {{multimidia.titulo}}
+        </p>
+    {% endfor %}
+</body>
+</html>

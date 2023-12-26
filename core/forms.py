@@ -57,3 +57,9 @@ class HemerotecaForm(forms.ModelForm):
     class Meta:
         model = Hemeroteca
         fields = ['registro', 'assunto', 'fornecedor', 'obs', 'status', 'criado_por']
+
+class MultimidiaForm(forms.ModelForm):
+
+    class Meta:
+        model = Multimidia
+        fields = ['registro','data', 'titulo', 'subtitulo', 'produtora', 'status']

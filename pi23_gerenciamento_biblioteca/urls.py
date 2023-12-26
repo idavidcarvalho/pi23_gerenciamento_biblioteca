@@ -65,4 +65,9 @@ urlpatterns = [
     path('hemeroteca/editar/<int:registro>/', editar_hemeroteca, name='editar_hemeroteca'),
     path('hemeroteca/remover/<int:registro>', remover_hemeroteca, name='remover_hemeroteca'),
 
+    path('multimidia/', multimidia, name='multimidia'),
+    path('multimidia/cadastro', cadastro_multimidia, name='cadastro_multimidia'),
+    path('multimidia/editar/<int:registro>/', editar_multimidia, name='editar_multimidia'),
+    path('multimidia/remover/<int:registro>', remover_multimidia, name='remover_multimidia'),   
+
 ]

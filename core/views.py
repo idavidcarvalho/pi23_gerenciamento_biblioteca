@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
-from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm, PeriodicoForm, HemerotecaForm
+from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm, PeriodicoForm, HemerotecaForm, MultimidiaForm
 from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro, Periodico, Emprestimo, Hemeroteca, Leitor, Multimidia
 from django.contrib.auth.models import Permission
 
@@ -492,3 +492,44 @@ def remover_hemeroteca (request, registro):
     hemeroteca = Hemeroteca.objects.get(pk=registro)
     hemeroteca.delete()
     return redirect('hemeroteca')
+
+# CRUD Multimídia
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def cadastro_multimidia(request):
+    form = MultimidiaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('multimidia')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_multimidia.html', contexto)
+
+@login_required
+def multimidia(request):
+    listar_multimidia = Multimidia.objects.all()
+    contexto = {
+        'listar_multimidia': listar_multimidia
+    }
+    return render(request, 'multimidia.html', contexto)
+
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def editar_multimidia(request, registro):
+    multimidia = Multimidia.objects.get(pk=registro)
+    form = MultimidiaForm(request.POST or None, instance=multimidia)
+    if form.is_valid():
+        form.save()
+        return redirect('multimidia')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_multimidia.html', contexto)
+
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def remover_multimidia (request, registro):
+    multimidia = Multimidia.objects.get(pk=registro)
+    hemeroteca.delete()
+    return redirect('multimidia')
