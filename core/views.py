@@ -531,5 +531,5 @@ def editar_multimidia(request, registro):
 @user_passes_test(permissaoCoodenadorBibliotecario)
 def remover_multimidia (request, registro):
     multimidia = Multimidia.objects.get(pk=registro)
-    hemeroteca.delete()
+    multimidia.delete()
     return redirect('multimidia')

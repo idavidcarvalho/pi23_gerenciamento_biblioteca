@@ -12,7 +12,9 @@
     {% for multimidia in listar_multimidia %}
         <p>
             {{multimidia.registro}} |
-            {{multimidia.titulo}}
+            {{multimidia.titulo}} |
+            <a href="{% url 'editar_multimidia' multimidia.registro %}">Editar</a> |
+            <a href="{% url 'remover_multimidia' multimidia.registro %}">Deletar</a>
         </p>
     {% endfor %}
 </body>
