@@ -63,3 +63,9 @@ class MultimidiaForm(forms.ModelForm):
     class Meta:
         model = Multimidia
         fields = ['registro','data', 'titulo', 'subtitulo', 'produtora', 'status']
+
+class LeitorForm(forms.ModelForm):
+
+    class Meta: 
+        model = Leitor
+        fields = ['rg', 'nome','profissao', 'instituicao', 'telefone', 'email', 'endereco', 'foto', 'criado_por']

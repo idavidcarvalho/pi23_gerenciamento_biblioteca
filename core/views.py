@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
-from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm, PeriodicoForm, HemerotecaForm, MultimidiaForm
+from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm, PeriodicoForm, HemerotecaForm, MultimidiaForm, LeitorForm
 from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro, Periodico, Emprestimo, Hemeroteca, Leitor, Multimidia
 from django.contrib.auth.models import Permission
 
@@ -533,3 +533,53 @@ def remover_multimidia (request, registro):
     multimidia = Multimidia.objects.get(pk=registro)
     multimidia.delete()
     return redirect('multimidia')
+
+# CRUD Leitor
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def cadastro_leitor(request):
+    if request.method == 'POST':
+        form = LeitorForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('leitor')
+    else:
+        form = LeitorForm()
+
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_leitor.html', contexto)
+
+@login_required
+def leitor(request):
+    listar_leitor = Leitor.objects.all()
+    contexto = {
+        'listar_leitor': listar_leitor
+    }
+    return render(request, 'leitor.html', contexto)
+
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def editar_leitor(request, rg):
+    leitor = Leitor.objects.get(pk=rg)
+
+    if request.method == 'POST':
+        form = LeitorForm(request.POST, request.FILES, instance=leitor)
+        if form.is_valid():
+            form.save()
+            return redirect('leitor')
+    else:
+        form = LeitorForm(instance=leitor)
+
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_leitor.html', contexto)
+
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
+def remover_leitor (request, registro):
+    leitor = Leitor.objects.get(pk=registro)
+    leitor.delete()
+    return redirect('leitor')

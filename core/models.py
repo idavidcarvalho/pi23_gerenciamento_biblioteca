@@ -145,7 +145,7 @@ class Leitor(models.Model):
     telefone = models.CharField(max_length=45)
     email = models.CharField(max_length=45)
     endereco = models.CharField(max_length=45)
-    foto = models.BinaryField(null=True)
+    foto = models.ImageField(upload_to='leitores', null=False)
     criado_por = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True, blank=True)
 
     def save(self, *args, **kwargs):

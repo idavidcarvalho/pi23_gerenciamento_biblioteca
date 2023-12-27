@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitores</title>
+</head>
+<body>
+    <h1>Listar Leitores</h1>
+    <p><a href="{% url 'cadastro_leitor' %}">Adicionar um Leitor</a></p>
+
+    {% for leitor in listar_leitor %}
+        <p>
+            {{leitor.rg}} |
+            <img src="{{leitor.foto}}" alt="Foto do {{leitor.nome}}"> |
+            <a href="{% url 'editar_leitor' leitor.rg %}">Editar</a> |
+        </p>
+    {% endfor %}
+</body>
+</html>

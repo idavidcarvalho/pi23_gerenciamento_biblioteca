@@ -70,4 +70,8 @@ urlpatterns = [
     path('multimidia/editar/<int:registro>/', editar_multimidia, name='editar_multimidia'),
     path('multimidia/remover/<int:registro>', remover_multimidia, name='remover_multimidia'),   
 
+    path('leitor/', leitor, name='leitor'),
+    path('leitor/cadastro', cadastro_leitor, name='cadastro_leitor'),
+    path('leitor/editar/<int:rg>/', editar_leitor, name='editar_leitor'),
+    # path('leitor/remover/<int:registro>', remover_leitor, name='remover_leitor'),   
 ]
