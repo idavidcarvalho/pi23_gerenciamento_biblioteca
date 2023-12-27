@@ -8,13 +8,29 @@
     grid-template-rows: auto;
 }
 
-.bt-editar-ex{
-    background-color: #DA0502;
+.bt-acao{
     margin-top: 5px;
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 10px 5px;
 }
 
-.bt-editar-ex:hover{
+.bt-acao:hover{
+   color: white;
+}
+.ex{
+    background-color: #DA0502;
+}
+.ex:hover{
     background-color: #e33e3b ;
+}
+.ed{
+    background-color: #022978;
+}
+.ed:hover{
+    background-color: #1946a2;
 }
 .linha{
     width: 20%;
@@ -42,12 +58,13 @@
     background-color: #022978;
     width: 15%;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
     font-family: League Spartan;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    padding: 10px;
     
 }
 .button-novo a {
@@ -57,4 +74,5 @@
 
 .button-novo:hover{
     background-color: #1946a2;
+    color: white;
 }
