@@ -455,7 +455,7 @@ def remover_periodico (request, registro):
     periodico.delete()
     return redirect('periodico')
 
-# CRUD Hemeroteca
+# -------- CRUD Hemeroteca -------------
 @login_required
 @user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_hemeroteca(request):
