@@ -19,6 +19,9 @@ def conta(request):
 def acervo(request):
     return render(request, 'acervo.html')
 
+def saiba_mais(request):
+    return render(request, 'saiba_mais.html')
+
 #-------- Login -----
 def autenticar(request):
     if request.POST:
@@ -609,19 +612,7 @@ def emprestimo(request):
     return render(request, 'emprestimo.html', contexto)
 
 @login_required
-def editar_emprestimo(request, id):
-    emprestimo = Emprestimo.objects.get(pk=id)
-    form = EmprestimoForm(request.POST or None, instance=emprestimo)
-    if form.is_valid():
-        form.save()
-        return redirect('emprestimo')
-    contexto = {
-        'form': form
-    }
-    return render(request, 'cadastro_emprestimo.html', contexto)
-
-@login_required
-def remover_emprestimo (request, id):
+def cancelar_emprestimo (request, id):
     emprestimo = Emprestimo.objects.get(pk=id)
     emprestimo.delete()
     return redirect('emprestimo')

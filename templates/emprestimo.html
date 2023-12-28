@@ -77,9 +77,9 @@
                 <th scope="col" class=" bg-primary fonte">Leitor</th>
                 <th scope="col" class=" bg-primary fonte">Livro</th>
                 <th scope="col" class=" bg-primary fonte">Periódico</th>
-                <th scope="col" class=" bg-primary fonte">Justificativa</th>
                 <th scope="col" class=" bg-primary fonte">Realizado por</th>
                 <th scope="col" class=" bg-primary fonte">Status</th>
+                <th scope="col" class=" bg-primary fonte">Ação</th>
               </tr>
             </thead>
             <tbody>
@@ -89,14 +89,10 @@
                 <td>{{emprestimo.leitor }}</td>
                 <td>{{emprestimo.periodico }}</td>
                 <td>{{emprestimo.livro}}</td>
-                <td>{{emprestimo.justificativa}}</td>
                 <td>{{emprestimo.realizado_por}}</td>
                 <td>{{periodico.status}}</td>
-                
                 <td>
-                    <a href="{% url 'editar_emprestimo' emprestimo.id %}" class="bt-acao ed fonte">Editar</a>
-                    
-                    <a href="{% url 'remover_emprestimo' emprestimo.id %}" class="bt-acao ex fonte">Deletar</a>
+                    <a href="{% url 'cancelar_emprestimo' emprestimo.id %}" class="bt-acao ex fonte">Cancelar</a>
                 </td>
               </tr>
               {% empty %}

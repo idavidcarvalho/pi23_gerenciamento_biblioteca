@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import path
-from core.views import autenticar, desconectar
 from core.views import *
 
 urlpatterns = [
@@ -10,6 +9,7 @@ urlpatterns = [
     path('login/', desconectar, name='logout'),
     path('minha/conta/', conta, name='minha_conta'),
     path('acervo/', acervo, name='acervo'),
+    path('sobre/', saiba_mais, name='saiba mais'),
 
     path('autor/', autor, name='autor'),
     path('autor/cadastro/', cadastro_autor, name='cadastro_autor'),
@@ -78,6 +78,5 @@ urlpatterns = [
 
     path('emprestimo/', emprestimo, name='emprestimo'),
     path('emprestimo/cadastro/', cadastro_emprestimo, name='cadastro_emprestimo'),
-    path('emprestimo/editar/<int:id>/', editar_emprestimo, name='editar_emprestimo'),
-    path('emprestimo/remover/<int:id>', remover_emprestimo, name='remover_emprestimo'),   
+    path('emprestimo/remover/<int:id>', cancelar_emprestimo, name='remover_emprestimo'),   
 ]
