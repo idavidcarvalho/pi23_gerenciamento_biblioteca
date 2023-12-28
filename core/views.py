@@ -27,7 +27,7 @@ def autenticar(request):
         user = authenticate(request, username=usuario, password=senha)
         if user is not None:
             login(request, user)
-            return redirect ('perfil')
+            return redirect ('home')
         else:
             return render(request, 'registration\login.html')
     else:
