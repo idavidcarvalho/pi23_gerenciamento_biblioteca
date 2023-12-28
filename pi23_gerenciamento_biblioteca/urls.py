@@ -5,10 +5,11 @@ from core.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('perfil/', perfil, name='perfil'),
+    path('home/', home, name='home'),
     path('', autenticar, name= 'login'),
     path('login/', desconectar, name='logout'),
-    path('minha_conta/', conta, name="minha_conta"),
+    path('minha/conta/', conta, name='minha_conta'),
+    path('acervo/', acervo, name='acervo'),
 
     path('autor/', autor, name='autor'),
     path('cadastro_autor/', cadastro_autor, name='cadastro_autor'),

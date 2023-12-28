@@ -9,6 +9,7 @@
     <title>Classificação</title>
     <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'registro_livro.css' %}">
+    <link rel="stylesheet" href="{% static 'cadastro_autor.css' %}">
 </head>
 <body>
     <div class="container">
@@ -18,8 +19,8 @@
             <form method="post">
                 {% csrf_token %}
                 <label for="nome">CLASSIFICAÇÃO</label>
-                <div class="div-input">
-                    {% render_field form.nome class="div-input" %}
+                <div>
+                    {% render_field form.nome class="nome-input" %}
                 </div>
 
                 <div class="button">

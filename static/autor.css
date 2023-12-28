@@ -1,11 +1,11 @@
-.container{
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-areas: 
-    "main";
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+.container-bt{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.titulo{
+    width: 80%;
+    height: 10%;
 }
 
 .bt-acao{
@@ -36,12 +36,6 @@
     width: 20%;
 }
 
-.autor{
-    margin-left: 49px;
-    font-size: 20px;
-    font-family: League Spartan;
-}
-
 .autor-container{
     width: 104%;
     height: 50px;
@@ -56,16 +50,20 @@
 
 .button-novo{
     background-color: #022978;
-    width: 15%;
+    width: 20%;
+    height: 55px;
     color: white;
     font-size: 20px;
     font-family: League Spartan;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     border-radius: 8px;
-    padding: 10px;
-    
+}
+
+.novo-bt{
+    margin-top: 17px;
 }
 .button-novo a {
     text-decoration: none;

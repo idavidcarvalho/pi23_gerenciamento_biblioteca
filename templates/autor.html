@@ -1,60 +1,98 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem de autores</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'leitores_ativos.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'funcionarios_ativos.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'autor.css' %}" />
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'autor.css' %}">
+    <title>Autor</title>
 </head>
 <body>
-    <div class="container"> 
-
-        <div class="container-main">
-            <main>
-                <div class="campo-busca">
-                    <form class="search-container">
-                        <input type="text" id="search-bar" placeholder="Buscar">
-                        <a href="#"><img class="search-icon" src="/img/lupa.png"></a>
-                    </form>
-                </div>
-                <div class="button-novo-container">
-                    <div class="button-novo">
-                        <div>
-                            <p><a href="{% url 'cadastro_autor' %}">NOVO</a></p>
-                        </div>
-                    </div>
-                </div>
-                {% for autor in listar_autor %}
-                <div class="container-tabela"> 
-                    <div class="autor-container">
-                        <div>
-                            <p class="autor">Autores</p>
-                        </div>
-                    </div>
-                    <div>
-                        <table>
-                            <tr>
-                                <th class="titulo">AUTOR</th>
-                                <th class="titulo">AÇÃO</th>
-                            </tr>
-                            <tr>
-                                <td class="linhas">{{ autor.nome }}</td>
-                                <td class="linha">
-                                    <a href="{% url 'editar_autor' autor.id %}" class="bt-editar">EDITAR</a>
-                                    <a href="{% url 'remover_autor' autor.id %}" class="bt-editar-ex">Deletar</a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                {% empty %}
-                <p>Nenhum autor cadastrado!</p>
-                {% endfor %}
-            </main>
+    <body id="body-pd">
+        <header class="header" id="header">
+          <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        </header>
+        <div class="l-navbar fonte" id="nav-bar">
+          <nav class="nav">
+            <div> 
+                  <h3 class="nav_logo-name text-center mb-5">BiblioGest</h3>
+                
+                <div class="nav_list"> 
+                  <a href="#" class="nav_link active"> 
+                    <i class='bx bxs-home nav_icon'></i> 
+                      <spanclass="nav_name">INÍCIO</spanclass=> </a> 
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bxs-group nav_icon'></i> 
+                    <span class="nav_name">FUNCIONÁRIOS</span> 
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bxs-book-reader nav_icon'></i>
+                    <span class="nav_name">LEITORES</span>
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bxs-book nav_icon'></i>
+                    <span class="nav_name">ACERVO</span>
+                  </a>      
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bx-repost nav_icon'></i>
+                    <span class="nav_name">EMPRÉSTIMOS</span> 
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bx-user nav_icon'></i>
+                <span class="nav_name">MINHA CONTA</span> 
+                 </div>
+                 <a href="{% url 'logout' %}" class="nav_link"> 
+                  <i class='bx bx-log-out nav_icon'></i> 
+                  <span class="nav_name">Sair</span> 
+                </a>
+            </div> 
+          </nav>
         </div>
-    </div>
+    
+        <!--Container Main start-->
+        <div class="height-100">
+          <div class="container-bt">
+            <div class="titulo">
+               <h1 class="fonte text-dark ">Autores</h1> 
+            </div>
+
+            <div class="button-novo">
+              <div class="novo-bt">
+                <p><a href="{% url 'cadastro_autor' %}">Novo Autor</a></p>
+              </div>
+            </div>
+          </div>
+           
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" class=" bg-primary fonte">Autor</th>
+                <th scope="col" class=" bg-primary fonte">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for autor in listar_autor %}
+              <tr>
+                <th scope="row">{{ autor.nome }}</th>
+                <td>
+                    <a href="{% url 'editar_autor' autor.id %}" class="bt-acao ed fonte">Editar</a>
+                    <a href="{% url 'remover_autor' autor.id %}" class="bt-acao ex fonte">Deletar</a>
+                </td>
+              </tr>
+              {% empty %}
+              <p>Nenhum autor cadastrado!</p>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    <script
+    src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+  <script src="{% static 'js/script.js' %}"> </script>
+  <script src="{% static 'js/scriptLink.js' %}"></script>
 </body>
 </html>

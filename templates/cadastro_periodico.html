@@ -8,6 +8,7 @@
     <title>Periódicos</title>
     <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'cadastro_periodico.css' %}">
 </head>
 <body>
     <div class="container">
@@ -26,7 +27,7 @@
                
 
                 <label for="nome">TÍTULO</label>
-                {% render_field form.titulo class="div-input" %}
+                {% render_field form.titulo class="input-emprego" %}
 
                 <div class="form-emprego"> 
                     <div class="profissao">
@@ -40,7 +41,7 @@
             
                     <div class="profissao">
                         <label for="">NÚMERO</label> <br>
-                        {% render_field form.numero class="input-emprego" %}
+                        {% render_field form.numero class="div-input" %}
                     </div>
                 </div>
 

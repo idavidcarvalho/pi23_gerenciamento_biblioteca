@@ -20,7 +20,6 @@
         <div class="l-navbar fonte" id="nav-bar">
           <nav class="nav">
             <div> 
-               
                   <h3 class="nav_logo-name text-center mb-5">BiblioGest</h3>
                 
                 <div class="nav_list"> 
@@ -60,9 +59,17 @@
     
         <!--Container Main start-->
         <div class="height-100">
-            <h1 class="fonte text-dark ">Periódicos</h1>   
-            <p><a href="{% url 'cadastro_periodico' %}" class="button-novo flex-end">Novo Periódico</a></p>
+          <div class="container-bt">
+            <div class="titulo">
+               <h1 class="fonte text-dark ">Periódicos</h1> 
+            </div>
 
+            <div class="button-novo">
+              <div class="novo-bt">
+                <p><a href="{% url 'cadastro_periodico' %}">Novo Periódico</a></p>
+              </div>
+            </div>
+          </div>
 
           <table class="table table-striped">
             <thead>

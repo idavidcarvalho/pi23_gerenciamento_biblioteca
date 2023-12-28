@@ -10,11 +10,14 @@ def permissaoCoodenadorBibliotecario(Usuario):
     return user_passes_test('core.coordenador') or user_passes_test('core.bibliotecario')
 
 @login_required
-def perfil(request):
-    return render(request, 'perfil.html')
+def home(request):
+    return render(request, 'home.html')
 
 def conta(request):
     return render(request, 'minha_conta.html')
+
+def acervo(request):
+    return render(request, 'acervo.html')
 
 #-------- Login -----
 def autenticar(request):

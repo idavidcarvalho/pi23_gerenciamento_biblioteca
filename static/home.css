@@ -43,6 +43,11 @@
     font-family: League Spartan;
 }
 
+.nome-cat{
+    text-decoration: none;
+    color: white;
+}
+
 .conta-p{
     margin-left: 8px;
     font-family: League Spartan;
