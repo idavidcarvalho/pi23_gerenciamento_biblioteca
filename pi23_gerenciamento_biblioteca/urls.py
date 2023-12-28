@@ -78,5 +78,5 @@ urlpatterns = [
 
     path('emprestimo/', emprestimo, name='emprestimo'),
     path('emprestimo/cadastro/', cadastro_emprestimo, name='cadastro_emprestimo'),
-    path('emprestimo/remover/<int:id>', cancelar_emprestimo, name='remover_emprestimo'),   
+    #path('emprestimo/remover/<int:id>', remover_emprestimo, name='remover_emprestimo'),   
 ]

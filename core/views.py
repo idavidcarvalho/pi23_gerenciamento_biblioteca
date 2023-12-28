@@ -610,9 +610,3 @@ def emprestimo(request):
         'listar_emprestimo': listar_emprestimo
     }
     return render(request, 'emprestimo.html', contexto)
-
-@login_required
-def cancelar_emprestimo (request, id):
-    emprestimo = Emprestimo.objects.get(pk=id)
-    emprestimo.delete()
-    return redirect('emprestimo')
