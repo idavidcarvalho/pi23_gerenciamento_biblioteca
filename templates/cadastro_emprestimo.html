@@ -1,0 +1,53 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empréstimos</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'cadastro_periodico.css' %}">
+</head>
+<body>
+    <div class="container">
+        <main>
+        <p class="cadastro">REALIZE UM NOVO EMPRÉSTIMO</p>
+        <div class="form-leitor">
+            <form method="post">
+                {% csrf_token %}
+                <label for="nome">LEITOR</label> 
+                    {% render_field form.leitor class="input-emprego" %}
+
+                <div class="form-emprego"> 
+                    <div class="profissao">
+                        <label for="">PERIÓDICO
+                        </label> <br>
+                        {% render_field form.periodico class="input-emprego" %}
+                    </div>
+                    <label for="nome">LIVRO</label>
+                    {% render_field form.livro class="input-emprego" %}
+                </div>
+                <div class="profissao">
+                    <label for="">JUSTIFICATIVA</label> <br>
+                    {% render_field form.justificativa class="div-input" %}
+                </div>
+                <div class="form-emprego">
+                    <div class="profissao">
+                        <label for="">REALIZADO POR: </label> <br>
+                        {% render_field form.realizado_por class="div-input" %}
+                    </div>
+                </div>
+                <div hidden>
+                {% render_field form.status class="div-input" %}
+                </div>
+                <div class="button">
+                    <input type="submit" value="SALVAR" class="bt-cadastrar">
+                </div>
+            </form>
+        </div>
+        </main>
+    </div>
+</body>
+</html>

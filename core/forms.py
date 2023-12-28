@@ -53,19 +53,21 @@ class PeriodicoForm(forms.ModelForm):
         fields = ['registro', 'titulo', 'numero', 'tipoPeriodico', 'status', 'autor', 'editora', 'secao', 'criado_por']
 
 class HemerotecaForm(forms.ModelForm):
-
     class Meta:
         model = Hemeroteca
         fields = ['registro', 'assunto', 'fornecedor', 'obs', 'status', 'criado_por']
 
 class MultimidiaForm(forms.ModelForm):
-
     class Meta:
         model = Multimidia
         fields = ['registro','data', 'titulo', 'subtitulo', 'produtora', 'status']
 
 class LeitorForm(forms.ModelForm):
-
     class Meta: 
         model = Leitor
         fields = ['rg', 'nome','profissao', 'instituicao', 'telefone', 'email', 'endereco', 'foto', 'criado_por']
+
+class EmprestimoForm(forms.ModelForm):
+    class Meta: 
+        model = Emprestimo
+        fields = ['justificativa', 'leitor', 'periodico', 'livro', 'status', 'realizado_por']

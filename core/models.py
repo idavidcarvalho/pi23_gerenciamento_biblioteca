@@ -158,7 +158,6 @@ class Leitor(models.Model):
 
 # Define the `Emprestimo` model
 class Emprestimo(models.Model):
-    idEmprestimo = models.AutoField(primary_key=True)
     justificativa = models.CharField(max_length=45, null=True)
     leitor = models.ForeignKey(Leitor, on_delete=models.CASCADE)
     periodico = models.ForeignKey(Periodico, on_delete=models.CASCADE, null=True)

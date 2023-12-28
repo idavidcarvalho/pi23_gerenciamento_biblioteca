@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
-from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm, PeriodicoForm, HemerotecaForm, MultimidiaForm, LeitorForm
-from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro, Periodico, Emprestimo, Hemeroteca, Leitor, Multimidia
+from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm, PeriodicoForm, HemerotecaForm, MultimidiaForm, LeitorForm, EmprestimoForm
+from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro, Periodico, Emprestimo, Hemeroteca, Leitor, Multimidia, Emprestimo
 from django.contrib.auth.models import Permission
 
 def permissaoCoodenadorBibliotecario(Usuario):
@@ -586,3 +586,42 @@ def remover_leitor (request, registro):
     leitor = Leitor.objects.get(pk=registro)
     leitor.delete()
     return redirect('leitor')
+
+# ---------- CRUD Empréstimo -----------
+
+@login_required
+def cadastro_emprestimo(request):
+    form = EmprestimoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('emprestimo')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_emprestimo.html', contexto)
+
+@login_required
+def emprestimo(request):
+    listar_emprestimo = Emprestimo.objects.all()
+    contexto = {
+        'listar_emprestimo': listar_emprestimo
+    }
+    return render(request, 'emprestimo.html', contexto)
+
+@login_required
+def editar_emprestimo(request, id):
+    emprestimo = Emprestimo.objects.get(pk=id)
+    form = EmprestimoForm(request.POST or None, instance=emprestimo)
+    if form.is_valid():
+        form.save()
+        return redirect('emprestimo')
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastro_emprestimo.html', contexto)
+
+@login_required
+def remover_emprestimo (request, id):
+    emprestimo = Emprestimo.objects.get(pk=id)
+    emprestimo.delete()
+    return redirect('emprestimo')
