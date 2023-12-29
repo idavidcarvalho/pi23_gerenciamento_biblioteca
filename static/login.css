@@ -40,10 +40,9 @@ main {
     background-color: #ECF2F7;
     margin-top: 20px;
     margin-right: 30px;
-    margin-bottom: 20px;
     border-radius: 8px;
     width: 45%;
-    height: 82%;
+    height: 68%;
 }
 
 .form-container{
@@ -69,10 +68,10 @@ main {
     width: 35%;
 }
 
-
 .nome-login{
     font-size: 25px;
     font-family: League Spartan;
+    color: #022978;
 }
 
 .form-aut{
@@ -127,6 +126,7 @@ main {
     color: white;
     font-family: Anton;
     margin-top: 30px;
+    margin-bottom: 10px;
 }
 .fonte-bg-1{
     font-size: 30px;
@@ -141,6 +141,14 @@ main {
 .ilustracao-login{
     width: 58%;
     margin-left: 40px;
+}
+
+.img-login{
+    align-items: center;
+    display: flex;
+    justify-content: end;
+    width: 90%;
+  
 }
 
 .logo-azul{
@@ -168,15 +176,6 @@ main {
 .saiba-mais:hover{
     transform: scale(1.1);
     transition: all 0.1s;
-}
-
-.img-login{
-    margin-top: 20px;
-    align-items: center;
-    display: flex;
-    justify-content: end;
-    width: 90%;
-    height: 35%;
 }
 
 .senha{
