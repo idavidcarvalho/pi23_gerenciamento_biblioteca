@@ -382,7 +382,9 @@ def remover_usuario (request,id):
 def cadastro_livro(request):
     form = LivroForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        livro = form.save(commit=False)
+        livro.criado_por = request.user
+        livro.save()
         return redirect('livro')
     contexto = {
         'form': form
@@ -422,8 +424,11 @@ def remover_livro (request,registro):
 @user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_periodico(request):
     form = PeriodicoForm(request.POST or None)
+    
     if form.is_valid():
-        form.save()
+        periodico = form.save(commit=False)
+        periodico.criado_por = request.user
+        periodico.save()
         return redirect('periodico')
     contexto = {
         'form': form
@@ -433,9 +438,12 @@ def cadastro_periodico(request):
 @login_required
 def periodico(request):
     titulo = ''
+    status =''
     if request.POST:
         titulo = request.POST['titulo']
-        listar_periodico = Periodico.objects.filter(titulo__contains=titulo)
+        status = request.POST['status']
+        if request.POST['status'] =='1':
+            listar_periodico = Periodico.objects.filter(titulo__contains=titulo).filter(status='Descartado')
     else:
         listar_periodico = Periodico.objects.all()
     
@@ -465,13 +473,21 @@ def remover_periodico (request, registro):
     periodico.delete()
     return redirect('periodico')
 
+def descartar_periodico(request, registro):
+    periodico = Periodico.objects.get(pk=registro)
+    periodico.status = 'Descartado'
+    periodico.save()
+    return redirect('periodico')
+
 # -------- CRUD Hemeroteca -------------
 @login_required
 @user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_hemeroteca(request):
     form = HemerotecaForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        hemeroteca = form.save(commit=False)
+        hemeroteca.criado_por = request.user
+        hemeroteca.save()
         return redirect('hemeroteca')
     contexto = {
         'form': form
@@ -506,13 +522,21 @@ def remover_hemeroteca (request, registro):
     hemeroteca.delete()
     return redirect('hemeroteca')
 
+def cancelar_hemeroteca(request, registro):
+    hemeroteca = Hemeroteca.objects.get(pk=registro)
+    hemeroteca.status = 'Descartada'
+    hemeroteca.save()
+    return redirect('hemeroteca')
+
 # CRUD Multimídia
 @login_required
 @user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_multimidia(request):
     form = MultimidiaForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        multimidia = form.save(commit=False)
+        multimidia.criado_por = request.user
+        multimidia.save()
         return redirect('multimidia')
     contexto = {
         'form': form
@@ -554,7 +578,9 @@ def cadastro_leitor(request):
     if request.method == 'POST':
         form = LeitorForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            leitor = form.save(commit=False)
+            leitor.criado_por = request.user
+            leitor.save()
             return redirect('leitor')
     else:
         form = LeitorForm()
@@ -603,7 +629,9 @@ def remover_leitor (request, registro):
 def cadastro_emprestimo(request):
     form = EmprestimoForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        emprestimo = form.save(commit=False)
+        emprestimo.criado_por = request.user
+        emprestimo.save()
         return redirect('emprestimo')
     contexto = {
         'form': form

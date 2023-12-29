@@ -45,29 +45,29 @@ class ProdutoraForm(forms.ModelForm):
 class LivroForm(forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ['titulo', 'registro', 'paginas', 'edicao', 'dataLancamento', 'status', 'autor', 'editora', 'classificacao', 'secao', 'estado', 'criado_por']
+        fields = ['titulo', 'registro', 'paginas', 'edicao', 'dataLancamento', 'autor', 'editora', 'classificacao', 'secao', 'estado']
 
 class PeriodicoForm(forms.ModelForm):
     class Meta:
         model = Periodico
-        fields = ['registro', 'titulo', 'numero', 'tipoPeriodico', 'status', 'autor', 'editora', 'secao', 'criado_por']
+        fields = ['registro', 'titulo', 'numero', 'tipoPeriodico', 'autor', 'editora', 'secao']
 
 class HemerotecaForm(forms.ModelForm):
     class Meta:
         model = Hemeroteca
-        fields = ['registro', 'assunto', 'fornecedor', 'obs', 'status', 'criado_por']
+        fields = ['registro', 'assunto', 'fornecedor', 'obs']
 
 class MultimidiaForm(forms.ModelForm):
     class Meta:
         model = Multimidia
-        fields = ['registro','data', 'titulo', 'subtitulo', 'produtora', 'status']
+        fields = ['registro','data', 'titulo', 'subtitulo', 'produtora']
 
 class LeitorForm(forms.ModelForm):
     class Meta: 
         model = Leitor
-        fields = ['rg', 'nome','profissao', 'instituicao', 'telefone', 'email', 'endereco', 'foto', 'criado_por']
+        fields = ['rg', 'nome','profissao', 'instituicao', 'telefone', 'email', 'endereco', 'foto']
 
 class EmprestimoForm(forms.ModelForm):
     class Meta: 
         model = Emprestimo
-        fields = ['justificativa', 'leitor', 'periodico', 'livro', 'status', 'realizado_por']
+        fields = ['justificativa', 'leitor', 'periodico', 'livro']

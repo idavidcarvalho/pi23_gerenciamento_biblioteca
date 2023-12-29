@@ -67,6 +67,9 @@
               </div>
             </div>
           </div>
+          <div>
+            
+          </div>
            
           <table class="table table-striped">
             <thead>
@@ -88,10 +91,10 @@
                 <th scope="row">{{ hemeroteca.fornecedor }}</th>
                 <th scope="row">{{ hemeroteca.obs }}</th>
                 <th scope="row">{{ hemeroteca.criado_por }}</th>
-                <th scope="row">{{ hemeroteca.status }}</th>
+                <th scope="row">{{ hemeroteca.status }}</th>  
                 <td>
                     <a href="{% url 'editar_hemeroteca' hemeroteca.registro %}" class="bt-acao ed fonte">Editar</a>
-                    <a href="{% url 'remover_hemeroteca' hemeroteca.registro %}" class="bt-acao ex fonte">Deletar</a>
+                    <a href="{% url 'descartar_hemeroteca' hemeroteca.registro %}" class="bt-acao ex fonte">Descartar</a>
                 </td>
               </tr>
               {% empty %}
