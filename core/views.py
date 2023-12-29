@@ -432,9 +432,16 @@ def cadastro_periodico(request):
 
 @login_required
 def periodico(request):
-    listar_periodico = Periodico.objects.all()
+    titulo = ''
+    if request.POST:
+        titulo = request.POST['titulo']
+        listar_periodico = Periodico.objects.filter(titulo__contains=titulo)
+    else:
+        listar_periodico = Periodico.objects.all()
+    
     contexto = {
-        'listar_periodico': listar_periodico
+        'listar_periodico': listar_periodico,
+        'titulo': titulo,   
     }
     return render(request, 'periodico.html', contexto)
 

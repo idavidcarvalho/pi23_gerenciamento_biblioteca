@@ -63,7 +63,14 @@
             <div class="titulo">
                <h1 class="fonte text-dark ">Periódicos</h1> 
             </div>
-
+            <form action="{% url 'periodico' %}" method="post">
+              {% csrf_token %}
+              <p>
+                  Título: <input type="text" name="titulo" value="{{titulo}}">
+                  <br>
+                  <input type="submit" value="Buscar">
+              </p>
+          </form>
             <div class="button-novo">
               <div class="novo-bt">
                 <p><a href="{% url 'cadastro_periodico' %}">Novo Periódico</a></p>
