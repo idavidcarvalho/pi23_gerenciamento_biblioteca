@@ -12,20 +12,19 @@
     <title>Acervo</title>
 </head>
 <body>
-
     <body id="body-pd">
         <header class="header" id="header">
           <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
           <div class="menu-item">
             <nav class="dp-menu">
                 <ul>
-                    <li class="lista"><a href="#">AUTORES</a>
+                    <li class="lista"><a href="#">AUTOR</a>
                         <ul>
                             <li><a href="{% url 'autor' %}">LISTAR</a></li>
                             <li><a href="{% url 'cadastro_autor' %}">CADASTRAR</a></li>
                         </ul>
                     </li>
-                    <li class="lista"><a href="#">EDITORAS</a>
+                    <li class="lista"><a href="#">EDITORA</a>
                         <ul>
                             <li><a href="{% url 'editora' %}">LISTAR</a></li>
                             <li><a href="{% url 'cadastro_editora' %}">CADASTRAR</a></li>
@@ -37,10 +36,24 @@
                             <li><a href="{% url 'cadastro_secao' %}">CADASTRAR</a></li>
                         </ul>
                     </li>
-                    <li class="lista"><a href="#">CLASSIFICAÇÕES</a>
+                    <li class="lista"><a href="#">CLASSIFICAÇÃO</a>
                         <ul>
                             <li><a href="{% url 'classificacao' %}">LISTAR</a></li>
                             <li><a href="{% url 'cadastro_classificacao' %}">CADASTRAR</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="lista"><a href="#">TIPO DE PERIÓDICO</a>
+                        <ul>
+                            <li><a href="{% url 'tipo_periodico' %}">LISTAR</a></li>
+                            <li><a href="{% url 'cadastro_tipo_periodico' %}">CADASTRAR</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="lista"><a href="#">PRODUTORA</a>
+                        <ul>
+                            <li><a href="{% url 'produtora' %}">LISTAR</a></li>
+                            <li><a href="{% url 'cadastro_produtora' %}">CADASTRAR</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -90,33 +103,31 @@
                     <h1 class="fonte text-dark ">Acervo</h1>  
 
                         <div class="cards-principal">
-                            <div class="acervo">
+                            <a href="{% url 'livro' %}" class="acervo">
                                 <div>
                                     <p>LIVROS</p>
                                 </div>
-                            </div>
+                            </a>
 
-                            <div class="acervo">
+                            <a href="{% url 'hemeroteca' %}" class="acervo">
                                 <div>
-                                    <p>INFANTO JUVENIL</p>
+                                    <p>HEMEROTECA</p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <div class="cards-principal-1">
-                            <div class="acervo">
-                                <a class="link-name" href="{% url 'periodico' %}">
-                                    <div>
-                                        <p>PERIÓDICOS</p>
-                                    </div>
-                                </a>
-                            </div>
+                            <a href="{% url 'periodico' %}" class="acervo">
+                                <div>
+                                    <p>PERIÓDICOS</p>
+                                </div>
+                            </a>
 
-                            <div class="acervo">
+                            <a href="{% url 'multimidia' %}" class="acervo">
                                 <div>
                                     <p>MULTIMÍDIA</p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                  </div>

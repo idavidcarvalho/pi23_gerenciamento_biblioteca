@@ -8,7 +8,7 @@
     <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="{% static 'autor.css' %}">
+    <link rel="stylesheet" href="{% static 'periodico.css' %}">
     <title>Periódicos</title>
 </head>
 <body>
@@ -16,6 +16,15 @@
     <body id="body-pd">
         <header class="header" id="header">
           <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+          <div class="container-busca">
+            <form action="{% url 'periodico' %}" method="post">
+              {% csrf_token %}
+              <div>
+                <input class="input-buscar" type="text" name="titulo" value="{{titulo}}">
+                <input class="bt-buscar" type="submit" value="Buscar">
+              </div>
+          </form>
+          </div>
         </header>
         <div class="l-navbar fonte" id="nav-bar">
           <nav class="nav">
@@ -54,27 +63,15 @@
             </div> 
           </nav>
         </div>
-    
-    
-    
         <!--Container Main start-->
         <div class="height-100">
           <div class="container-bt">
             <div class="titulo">
                <h1 class="fonte text-dark ">Periódicos</h1> 
             </div>
-            <form action="{% url 'periodico' %}" method="post">
-              {% csrf_token %}
-              <p>
-                  Título: <input type="text" name="titulo" value="{{titulo}}">
-                  <br>
-                  <input type="submit" value="Buscar">
-              </p>
-          </form>
-            <div class="button-novo">
-              <div class="novo-bt">
-                <p><a href="{% url 'cadastro_periodico' %}">Novo Periódico</a></p>
-              </div>
+    
+            <div class="bt-novo">
+              <p><a class="button-novo" href="{% url 'cadastro_periodico' %}">Novo Periódico</a></p>
             </div>
           </div>
 

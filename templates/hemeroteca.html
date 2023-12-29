@@ -1,21 +1,108 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'periodico.css' %}">
     <title>Hemeroteca</title>
 </head>
 <body>
-    <h1>Lista de hemerotecas</h1>
-    <p><a href="{% url 'cadastro_hemeroteca' %}">Adicionar uma hemeroteca</a></p>
+    <body id="body-pd">
+        <header class="header" id="header">
+          <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        </header>
+        <div class="l-navbar fonte" id="nav-bar">
+          <nav class="nav">
+            <div> 
+                  <h3 class="nav_logo-name text-center mb-5">BiblioGest</h3>
+                
+                <div class="nav_list"> 
+                  <a href="#" class="nav_link active"> 
+                    <i class='bx bxs-home nav_icon'></i> 
+                      <spanclass="nav_name">INÍCIO</spanclass=> </a> 
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bxs-group nav_icon'></i> 
+                    <span class="nav_name">FUNCIONÁRIOS</span> 
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bxs-book-reader nav_icon'></i>
+                    <span class="nav_name">LEITORES</span>
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bxs-book nav_icon'></i>
+                    <span class="nav_name">ACERVO</span>
+                  </a>      
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bx-repost nav_icon'></i>
+                    <span class="nav_name">EMPRÉSTIMOS</span> 
+                  </a> 
+                  <a href="#" class="nav_link"> 
+                    <i class='bx bx-user nav_icon'></i>
+                <span class="nav_name">MINHA CONTA</span> 
+                 </div>
+                 <a href="{% url 'logout' %}" class="nav_link"> 
+                  <i class='bx bx-log-out nav_icon'></i> 
+                  <span class="nav_name">Sair</span> 
+                </a>
+            </div> 
+          </nav>
+        </div>
+    
+        <!--Container Main start-->
+        <div class="height-100">
+          <div class="container-bt">
+            <div class="titulo">
+               <h1 class="fonte text-dark ">Hemerotecas</h1> 
+            </div>
 
-    {% for hemeroteca in listar_hemeroteca %}
-    <p>
-        {{ hemeroteca.registro }} |
-        {{ hemeroteca.assunto }} |
-        <a href="{% url 'editar_hemeroteca' hemeroteca.registro %}">Editar</a> |
-        <a href="{% url 'remover_hemeroteca' hemeroteca.registro %}">Deletar</a>
-    </p>
-    {% endfor %}
+            <div class="button-novo">
+              <div class="novo-bt">
+                <p><a href="{% url 'cadastro_hemeroteca' %}">Nova Hemeroteca</a></p>
+              </div>
+            </div>
+          </div>
+           
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" class=" bg-primary fonte">Registro</th>
+                <th scope="col" class=" bg-primary fonte">Assunto</th>
+                <th scope="col" class=" bg-primary fonte">Fornecedor</th>
+                <th scope="col" class=" bg-primary fonte">Observação</th>
+                <th scope="col" class=" bg-primary fonte">Criado por</th>
+                <th scope="col" class=" bg-primary fonte">Status</th>
+                <th scope="col" class=" bg-primary fonte">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for hemeroteca in listar_hemeroteca %}
+              <tr>
+                <th scope="row">{{ hemeroteca.registro }}</th>
+                <th scope="row">{{ hemeroteca.assunto }}</th>
+                <th scope="row">{{ hemeroteca.fornecedor }}</th>
+                <th scope="row">{{ hemeroteca.obs }}</th>
+                <th scope="row">{{ hemeroteca.criado_por }}</th>
+                <th scope="row">{{ hemeroteca.status }}</th>
+                <td>
+                    <a href="{% url 'editar_hemeroteca' hemeroteca.registro %}" class="bt-acao ed fonte">Editar</a>
+                    <a href="{% url 'remover_hemeroteca' hemeroteca.registro %}" class="bt-acao ex fonte">Deletar</a>
+                </td>
+              </tr>
+              {% empty %}
+              <p>Nenhuma hemeroteca cadastrada!</p>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    <script
+    src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+  <script src="{% static 'js/script.js' %}"> </script>
+  <script src="{% static 'js/scriptLink.js' %}"></script>
 </body>
 </html>

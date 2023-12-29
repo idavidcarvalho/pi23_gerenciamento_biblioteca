@@ -17,10 +17,6 @@
     margin: 10px 5px;
 }
 
-.bg-primary{
-    width: 85%;
-}
-
 .bt-acao:hover{
    color: white;
 }
@@ -54,7 +50,7 @@
 
 .button-novo{
     background-color: #022978;
-    width: 20%;
+    width: 100%;
     height: 55px;
     color: white;
     font-size: 20px;
@@ -66,15 +62,37 @@
     border-radius: 8px;
 }
 
-.novo-bt{
-    margin-top: 17px;
-}
 .button-novo a {
     text-decoration: none;
     color: white;
 }
 
+.bt-novo{
+    width: 20%;
+}
+
 .button-novo:hover{
     background-color: #1946a2;
     color: white;
+}
+
+.container-busca{
+    width: 93%;
+    height: 30px;
+}
+
+.input-buscar{
+    width: 92%;
+    border-radius: 6px;
+    border: 1px solid #022978;
+    outline:none;
+}
+
+.bt-buscar{
+    width: 7%;
+    background-color: #022978;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    outline:none;
 }
