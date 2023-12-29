@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@500&display=swap');
 
 *{
     padding: 0;
@@ -24,6 +25,10 @@
     margin-top: 30px;
     margin-left: 30px;
     justify-content: space-between;
+}
+
+.saudacao{
+    font-family: Arimo;
 }
 
 .header{
@@ -55,7 +60,7 @@
 }
 .conta{
     flex: end;
-    width: 14%;
+    width: 20%;
     display: flex;
     gap: 15px;
     margin-top: 29px;
@@ -71,7 +76,7 @@
     font-size: 17px;
     display: flex;
     height: 45px;
-    width: 150px;
+    width: 180px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -97,9 +102,9 @@ svg{
 .nome-biblioteca{
     background-color: #4778EC;
     margin-left: 30px;
-    margin-top: 60px;
+    margin-top: 45px;
     width: 95%;
-    height: 130px;
+    height: 118px;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -120,7 +125,7 @@ svg{
     width: 10%;
     height: 120px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 26px;
 }
 
 .livros-img{
@@ -129,15 +134,15 @@ svg{
 .cards{
     height: 280px;
     margin-left: 30px;
-    margin-top: 120px;
+    margin-top: 60px;
     display: flex;
-    gap: 89px;
+    gap: 70px;
 }
 
 .card-categorias{
     background-color: #022978;
     width: 20%;
-    height: 80%;
+    height: 63%;
     border-radius: 8px;
     color: white;
     font-family: League Spartan;
@@ -145,10 +150,12 @@ svg{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .card-categorias:hover{
     background-color: #1946a2;
+    color: white;
 }
 .svg-icon{
    text-align: center;

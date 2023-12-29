@@ -6,6 +6,7 @@
 .titulo{
     width: 80%;
     height: 10%;
+    margin-top: 25px;
 }
 
 .bt-acao{
@@ -60,6 +61,7 @@
     justify-content: center;
     text-align: center;
     border-radius: 8px;
+    margin-top: 25px;
 }
 
 .button-novo a {
@@ -79,6 +81,8 @@
 .container-busca{
     width: 93%;
     height: 30px;
+    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 .input-buscar{
@@ -95,4 +99,25 @@
     border: none;
     color: white;
     outline:none;
+}
+
+.status{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    font-family: League Spartan;
+}
+
+.select{
+    background-color: #4778EC;
+    border-radius: 4px;
+    border: none;
+    font-size: 13px;
+    height: 17px;
+    cursor: pointer;
+}
+
+.option{
+    background-color: white;
+   font-size: 13px;
 }

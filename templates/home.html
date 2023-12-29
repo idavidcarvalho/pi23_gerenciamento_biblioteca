@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>home</title>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
 </head>
 <body>
@@ -18,7 +19,7 @@
                     </div>
     
                     <div class="frase">
-                        <p>BOM TE VER POR AQUI,</p>
+                        <p class="saudacao">BOM TE VER POR AQUI,</p>
                         <br>
                         <p class="username">{{user.username}} &#128512</p>
                     </div>
@@ -28,7 +29,7 @@
                     <div class="minha-conta">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                          </svg>
+                        </svg>
                         <p class="conta-p">Minha conta</p>
                     </div>
 
@@ -56,61 +57,49 @@
             </div>
 
             <div class="cards">
-                <div class="card-categorias">
+                  <a class="card-categorias" href="{% url 'usuario' %}">
                     <div class="svg-icon">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-                              </svg>
+                            <i class='bx bxs-group nav_icon'></i>
                         </div>
                         <div class="div-categoria">
                              <p class="categoria">FUNCIONÁRIOS</p>
                         </div>
                     </div>
-                </div>
+                  </a>
 
-                <div class="card-categorias">
-                    <div class="svg-icon">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
-                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"/>
-                              </svg>
+                    <a class="card-categorias" href="">
+                        <div class="svg-icon">
+                            <div>
+                                <i class='bx bxs-book-reader nav_icon'></i>
+                            </div>
+                            <div class="div-categoria">
+                                 <p class="categoria">LEITORES</p>
+                            </div>
                         </div>
-                        <div class="div-categoria">
-                             <p class="categoria">LEITORES</p>
-                        </div>
-                    </div>
-                </div>
+                    </a>
 
-                <div class="card-categorias">
-                    <div class="svg-icon">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16">
-                                <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
-                              </svg>
-                        </div>
-                        <div class="div-categoria"  >
-                            <a class="nome-cat" href="{% url 'acervo' %}">
+                   <a class="card-categorias" href="">
+                        <div class="svg-icon">
+                            <div>
+                                <i class='bx bxs-book nav_icon'></i>
+                            </div>
+                            <div class="div-categoria"  >
                                 <p class="categoria">ACERVO</p>
-                            </a>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                   </a>
 
-                <div class="card-categorias">
-                    <div class="svg-icon">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="currentColor" class="bi bi-journal-arrow-up" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 11a.5.5 0 0 0 .5-.5V6.707l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 6.707V10.5a.5.5 0 0 0 .5.5"/>
-                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
-                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
-                              </svg>
+                    <a class="card-categorias" href="">
+                        <div class="svg-icon">
+                            <div>
+                                <i class='bx bx-repost nav_icon'></i>
+                            </div>
+                            <div class="div-categoria">
+                                 <p class="categoria">EMPRÉSTIMOS</p>
+                            </div>
                         </div>
-                        <div class="div-categoria">
-                             <p class="categoria">EMPRÉSTIMOS</p>
-                        </div>
-                    </div>
-                </div>
+                    </a>
             </div>
         </main>
     </div>

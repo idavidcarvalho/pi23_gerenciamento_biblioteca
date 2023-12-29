@@ -25,15 +25,17 @@
             <input class="input-buscar" type="text" name="titulo" value="{{titulo}}">
             <input class="bt-buscar" type="submit" value="Buscar">
           </div>
-          <div>
-            Status:
-            <select name="status">
-
-              <option value="-1">Todas</option>
-              <option value="1">descartatos</option>
-              <option value="2">ativos</option>
-
-            </select>
+          <div class="status">
+            <div>
+              Status
+              <select class="select" name="status">
+          
+                <option class="option" value="-1">Todos</option>
+                <option class="option" value="1">descartatos</option>
+                <option class="option" value="2">ativos</option>
+  
+              </select>
+            </div>
           </div>
         </form>
       </div>
@@ -127,9 +129,6 @@
         </tbody>
       </table>
     </div>
-
-
-
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
     <script src="{% static 'js/script.js' %}"> </script>
     <script src="{% static 'js/scriptLink.js' %}"></script>
