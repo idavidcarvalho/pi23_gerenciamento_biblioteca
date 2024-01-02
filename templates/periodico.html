@@ -31,8 +31,10 @@
               <select class="select" name="status">
           
                 <option class="option" value="-1">Todos</option>
-                <option class="option" value="1">descartatos</option>
-                <option class="option" value="2">ativos</option>
+                <option class="option" value="1">Descartatos</option>
+                <option class="option" value="2">Ativos</option>
+                <option class="option" value="3">Emprestados</option>
+                <option class="option" value="4">Extraviados</option>
   
               </select>
             </div>
@@ -118,13 +120,15 @@
             <td>{{periodico.status}}</td>
             <td>{{periodico.criado_por}}</td>
             <td>
+              {% if perms.core.permissaoCoodenadorBibliotecario %}
               <a href="{% url 'editar_periodico' periodico.registro %}" class="bt-acao ed fonte">Editar</a>
 
               <a href="{% url 'descartar_periodico' periodico.registro %}" class="bt-acao ex fonte">Descartar</a>
+              {% endif %}
             </td>
           </tr>
           {% empty %}
-          <p>Nenhum periódico cadastrado!</p>
+          <h6>Nenhum periódico encontrado 😔</h6>
           {% endfor %}
         </tbody>
       </table>

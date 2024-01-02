@@ -94,7 +94,7 @@ class Periodico(models.Model):
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     secao = models.ForeignKey(Secao, on_delete=models.CASCADE)
     editora = models.ForeignKey(Editora, on_delete=models.CASCADE)
-    status = models.CharField(max_length=45,choices=[('ativo', 'Ativo'), ('emprestado', 'Emprestado'), ('extraviado','Extraviado'),('descartado','Descartato')], default='ativo')
+    status = models.CharField(max_length=45,choices=[('ativo', 'Ativo'), ('emprestado', 'Emprestado'), ('extraviado','Extraviado'),('descartado','Descartado')], default='ativo')
     criado_por = models.ForeignKey(Usuario, on_delete=models.PROTECT)
 
     def __str__(self):

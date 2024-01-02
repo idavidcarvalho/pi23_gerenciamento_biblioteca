@@ -444,6 +444,15 @@ def periodico(request):
         status = request.POST['status']
         if request.POST['status'] =='1':
             listar_periodico = Periodico.objects.filter(titulo__contains=titulo).filter(status='Descartado')
+        elif request.POST['status'] == '2':
+            listar_periodico = Periodico.objects.filter(titulo__contains=titulo).filter(status='ativo')
+        elif request.POST['status'] == '-1':
+            listar_periodico = Periodico.objects.all()
+        elif request.POST['status'] == '3':
+            listar_periodico = Periodico.objects.filter(titulo__contains=titulo).filter(status='emprestado')
+        elif request.POST['status'] == '4':
+            listar_periodico = Periodico.objects.filter(titulo__contains=titulo).filter(status='extraviado')
+
     else:
         listar_periodico = Periodico.objects.all()
     
