@@ -50,11 +50,15 @@ urlpatterns = [
     path('funcionario/cadastro/', cadastro_usuario, name='cadastro_usuario'),
     path('funcionario/editar/<int:id>/', editar_usuario, name='editar_usuario'),
     path('funcionario/remover/<int:id>/', remover_usuario, name='remover_usuario'),
+    path('funcionario/desativar/<int:id>/', desativar_usuario, name='desativar_usuario'),
+
     
     path('livro/', livro, name='livro'),
     path('livro/cadastro/', cadastro_livro, name='cadastro_livro'),
     path('livro/editar/<int:registro>/', editar_livro, name='editar_livro'),
     path('livro/remover/<int:registro>/', remover_livro, name='remover_livro'),
+    path('livro/descartar/<int:registro>/', descartar_livro, name='descartar_livro'),
+
 
     path('periodico/', periodico, name='periodico'),
     path('periodico/cadastro/', cadastro_periodico, name='cadastro_periodico'),

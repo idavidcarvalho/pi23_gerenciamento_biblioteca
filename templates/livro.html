@@ -105,7 +105,7 @@
                 <td>
                     <a href="{% url 'editar_livro' livro.registro %}" class="bt-acao ed fonte">Editar</a>
                     
-                    <a href="#" onclick="descartar_livro({{livro.registro}})" class="bt-acao ex fonte">Deletar</a>
+                    <a href="#" onclick="descartar_livro({{livro.registro}})" class="bt-acao ex fonte">Descartar</a>
                 </td>
               </tr>
               {% empty %}
@@ -129,13 +129,13 @@
         "icon":"question",
         "showCancelButton":true,
         "cancelButtonText":"Cancelar",
-        "confirmButtonText":"Deletar",
+        "confirmButtonText":"Descartar",
         "reverseButtons":true,
         "confirmButtonColor":"red"
       })
       .then(function(result){
         if(result.isConfirmed){
-          var url = 'remover';
+          var url = 'descartar';
           window.location.href = url+"/"+registro
         }
       })

@@ -110,7 +110,7 @@
                 <th scope="row">{{ usuario.username }}</th>
                 <td>
                     <a href="{% url 'editar_usuario' usuario.id %}" class="bt-acao ed fonte">Editar</a>
-                    <a href="#" onclick="remover_usuario({{usuario.id}})" class="bt-acao ex fonte">Deletar</a>
+                    <a href="#" onclick="desativar_usuario({{usuario.id}})" class="bt-acao ex fonte">Desativar</a>
                 </td>
               </tr>
               {% empty %}
@@ -125,19 +125,19 @@
   <script src="{% static 'js/scriptLink.js' %}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    function remover_usuario(id){
+    function desativar_usuario(id){
       Swal.fire({
-        "title":"Tem certeza que deseja remover?",
+        "title":"Tem certeza que deseja desativar?",
         "icon":"question",
         "showCancelButton":true,
         "cancelButtonText":"Cancelar",
-        "confirmButtonText":"Deletar",
+        "confirmButtonText":"Desativar",
         "reverseButtons":true,
         "confirmButtonColor":"red"
       })
       .then(function(result){
         if(result.isConfirmed){
-          var url = 'remover';
+          var url = 'desativar';
           window.location.href = url+"/"+id
         }
       })

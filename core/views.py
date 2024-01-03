@@ -377,6 +377,12 @@ def remover_usuario (request,id):
     usuario.delete()
     return redirect('usuario')
 
+def desativar_usuario(request, id):
+   usuario = Usuario.objects.get(pk=id)
+   usuario.status = 'Inativo'
+   usuario.save()
+   return redirect('usuario')
+
 # -------------- CRUD Livro ----------
 @login_required
 @user_passes_test(permissaoCoodenadorBibliotecario)
@@ -418,6 +424,12 @@ def editar_livro(request, registro):
 def remover_livro (request,registro):
     livro = Livro.objects.get(pk=registro)
     livro.delete()
+    return redirect('livro')
+
+def descartar_livro(request, registro):
+    livro = Livro.objects.get(pk=registro)
+    livro.status = 'Descartado'
+    livro.save()
     return redirect('livro')
 
 #----------- CRUD Periódico ------------
@@ -656,3 +668,9 @@ def emprestimo(request):
         'listar_emprestimo': listar_emprestimo
     }
     return render(request, 'emprestimo.html', contexto)
+
+def cancelar_emprestimo(request, id):
+    emprestimo = Emprestimo.objects.get(pk=id)
+    emprestimo.status = 'Cancelado'
+    emprestimo.save()
+    return redirect('emprestimo')
