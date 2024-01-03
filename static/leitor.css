@@ -1,0 +1,23 @@
+.button-novo{
+    width: 20%;
+}
+
+.novo-bt{
+    margin-top: 12px;
+}
+
+.container-bt{
+    gap: 10px;
+}
+
+.in{
+    background-color: #0d6efd;
+}
+
+.bt-acao{
+    width: 100%;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

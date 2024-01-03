@@ -168,3 +168,106 @@ svg{
 .categoria{
     font-size: 23px;
 }
+
+@media screen and (max-width:1997px) {
+    .biblio-nome{
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width:1167px) {
+   .cards{
+        margin-right: 10px;
+   }
+
+   .biblio-nome{
+        font-size: 26px;
+    }
+
+    .conta{
+        width: 22%;
+    }
+}
+
+@media screen and (max-width:1048px) {
+    .cards{
+         margin-right: 17px;
+    }
+ 
+    .biblio-nome{
+         font-size: 24px;
+    }
+
+    .categoria{
+        font-size: 17px;
+    }
+
+    .logo-livro{
+        margin-top: 20px;
+    }
+    .livros-img{
+        width: 90%;
+    }
+ }
+
+ @media screen and (max-width: 1026px){
+    .minha-conta{
+        width: 80%;
+    }
+ }
+
+ @media screen and (max-width: 947px){
+    .cards{
+        gap: 30px;
+    }
+
+    .card-categorias{
+        width: 100%;
+    }
+
+    .biblio-nome{
+        font-size: 22px;
+   }
+
+   .conta{
+        width: 25%;
+    }
+
+    .logo-livro{
+        margin-top: 25px;
+    }
+
+ }
+
+@media screen and (max-width: 897px){
+    .logo-livro{
+        margin-top: 35px;
+    }
+
+    .biblio-nome{
+        font-size: 19px;
+    }
+}
+
+@media screen and (max-width: 794px){
+    .logo-livro{
+        margin-top: 60px;
+    }
+
+    .biblio-nome{
+        font-size: 17px;
+    }
+
+    .livros-img{
+        width: 70%;
+    }
+
+    .nome-biblioteca{
+        height: 80px;
+    }
+
+    .img-logo{
+      height: 100px;
+      width: 200px;
+    }
+}

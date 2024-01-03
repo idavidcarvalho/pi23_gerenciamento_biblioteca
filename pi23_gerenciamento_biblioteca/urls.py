@@ -62,7 +62,6 @@ urlpatterns = [
     path('periodico/remover/<int:registro>/', remover_periodico, name='remover_periodico'),
     path('periodico/descartar/<int:registro>', descartar_periodico, name='descartar_periodico'),
 
-
     path('hemeroteca/', hemeroteca, name='hemeroteca'),
     path('hemeroteca/cadastro/', cadastro_hemeroteca, name='cadastro_hemeroteca'),
     path('hemeroteca/editar/<int:registro>/', editar_hemeroteca, name='editar_hemeroteca'),
@@ -78,7 +77,7 @@ urlpatterns = [
     path('leitor/', leitor, name='leitor'),
     path('leitor/cadastro/', cadastro_leitor, name='cadastro_leitor'),
     path('leitor/editar/<int:rg>/', editar_leitor, name='editar_leitor'),
-    # path('leitor/remover/<int:registro>', remover_leitor, name='remover_leitor'),   
+    path('leitor/remover/<int:registro>', remover_leitor, name='remover_leitor'),   
 
     path('emprestimo/', emprestimo, name='emprestimo'),
     path('emprestimo/cadastro/', cadastro_emprestimo, name='cadastro_emprestimo'),

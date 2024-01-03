@@ -627,8 +627,8 @@ def editar_leitor(request, rg):
 
 @login_required
 @user_passes_test(permissaoCoodenadorBibliotecario)
-def remover_leitor (request, registro):
-    leitor = Leitor.objects.get(pk=registro)
+def remover_leitor (request, rg):
+    leitor = Leitor.objects.get(pk=rg)
     leitor.delete()
     return redirect('leitor')
 
