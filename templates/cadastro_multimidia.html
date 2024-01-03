@@ -1,17 +1,62 @@
+{% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar multimídia</title>
+    <title>Multimídia</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'cadastro_periodico.css' %}">
 </head>
 <body>
-    <h1>Cadastrar multimídia</h1>
+    <div class="container">
+        <main>
+        <p class="cadastro">CADASTRE UMA NOVA MULTIMÍDIA</p>
+        <div class="form-leitor">
+            <form method="post">
+                {% csrf_token %}
+                <label for="nome">REGISTRO</label> 
 
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Cadastrar">
-    </form>
+                    {% render_field form.registro class="input-emprego" %}              
+
+                <div class="form-emprego"> 
+                    <div class="profissao">
+                        <label for="">TÍTULO
+                            {% render_field form.titulo class="input-emprego" %}
+                        </label> <br>
+                    </div>
+            
+                    <div class="profissao">
+                        <label for="">SUBTÍTULO
+
+                        </label> <br>
+                        {% render_field form.subtitulo class="div-input" %}
+                    </div>
+                </div>
+
+                <div class="form-emprego">    
+                    <div class="profissao">
+                        <label>DATA
+                        </label> <br>
+                        {% render_field form.data class="div-input" %}
+                    </div>
+                    <div class="profissao">
+                        <label for="">PRODUTORA
+                            <a href="{% url 'cadastro_produtora' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            </svg></a>
+                        </label> <br>
+                        {% render_field form.produtora class="div-input" %}
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="CADASTRAR" class="bt-cadastrar">
+                </div>
+            </form>
+        </div>
+        </main>
+    </div>
 </body>
 </html>

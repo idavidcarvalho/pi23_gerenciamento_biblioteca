@@ -1,16 +1,45 @@
+{% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Hemeroteca</title>
+    <title>Hemroteca</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'cadastro_periodico.css' %}">
 </head>
 <body>
-    <h1>Cadastrar uma Hemeroteca</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Cadastrar">
-    </form>
+    <div class="container">
+        <main>
+            <p class="cadastro">CADASTRE UMA NOVA HEMEROTECA</p>
+            <div class="form-leitor">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-emprego"> 
+                        <div class="profissao">
+                            <label for="">REGISTRO
+                                {% render_field form.registro class="input-emprego" %}
+                            </label> <br>
+                        </div>
+                        <div class="profissao">
+                            <label for="">FORNECEDOR
+                            </label> <br>
+                            {% render_field form.fornecedor class="div-input" %}
+                        </div>
+                    </div>
+                    <label for="nome">ASSUNTO</label> 
+                    {% render_field form.assunto class="input-emprego" %}   
+                    
+                    <label for="nome">OBS</label> 
+                    {% render_field form.obs class="input-emprego" %}  
+                    <div class="button">
+                        <input type="submit" value="CADASTRAR" class="bt-cadastrar">
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

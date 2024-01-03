@@ -1,16 +1,68 @@
+{% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar leitor</title>
+    <title>Leitor</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'cadastro_periodico.css' %}">
 </head>
 <body>
-    <h1>Cadastre um leitor</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Cadastrar">
-    </form>
+    <div class="container">
+        <main>
+            <p class="cadastro">CADASTRE UM NOVO LEITOR</p>
+            <div class="form-leitor">
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="nome">NOME</label> 
+                        {% render_field form.nome class="input-emprego" %}              
+                    <div class="form-emprego"> 
+                        <div class="profissao">
+                            <label for="">RG
+                                {% render_field form.rg class="input-emprego" %}
+                            </label> <br>
+                        </div>
+                        <div class="profissao">
+                            <label for="">TELEFONE
+                            </label> <br>
+                            {% render_field form.telefone class="div-input" %}
+                        </div>
+                    </div>
+                    <div class="form-emprego">    
+                        <div class="profissao">
+                            <label>PROFISSÃO
+                            </label> <br>
+                            {% render_field form.profissao class="div-input" %}
+                        </div>
+                        <div class="profissao">
+                            <label for="">INSTITUIÇÃO
+                            </label> <br>
+                            {% render_field form.instituicao class="div-input" %}
+                        </div>
+                    </div>
+                    <div class="form-emprego">    
+                        <div class="profissao">
+                            <label>E-MAIL
+                            </label> <br>
+                            {% render_field form.email class="div-input" %}
+                        </div>
+                        <div class="profissao">
+                            <label for="">ENDEREÇO
+                            </label> <br>
+                            {% render_field form.endereco class="div-input" %}
+                        </div>
+                    </div>
+                    <label for="nome">FOTO</label> <br>
+                        {% render_field form.foto %}   
+                    <div class="button">
+                        <input type="submit" class="bt-cadastrar" value="CADASTRAR">
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

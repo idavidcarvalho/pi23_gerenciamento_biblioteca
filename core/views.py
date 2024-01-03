@@ -594,7 +594,7 @@ def remover_multimidia (request, registro):
     multimidia.delete()
     return redirect('multimidia')
 
-# CRUD Leitor
+# ---------- CRUD Leitor --------------
 @login_required
 @user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_leitor(request):
