@@ -84,6 +84,7 @@
     align-items: center;
     justify-content: center;
     font-family: League Spartan;
+    font-size: 22px;
     color: white;
     border-radius: 8px;
     cursor: pointer;
@@ -145,4 +146,10 @@
 
 .dp-menu ul ul li a {
   display: block;
+}
+
+.in-svg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

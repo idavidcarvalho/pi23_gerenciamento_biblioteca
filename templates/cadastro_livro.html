@@ -8,6 +8,7 @@
     <title>Livros</title>
     <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'cadastro_livro.css' %}">
 </head>
 <body>
     <div class="container">
@@ -17,20 +18,19 @@
             <form method="post">
                 {% csrf_token %}
                 <label for="nome">AUTOR
-                    <a href="{% url 'cadastro_autor' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                    <a class="svg" href="{% url 'cadastro_autor' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                     </svg></a>
                 </label> 
 
-                    {% render_field form.autor class="input-emprego" %}
+                {% render_field form.autor class="input-emprego" %}
                
-
                 <label for="nome">TÍTULO</label>
                 {% render_field form.titulo class="div-input" %}
                 <div class="form-emprego"> 
                     <div class="profissao">
                         <label for="">EDITORA
-                            <a href="{% url 'cadastro_editora' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <a class="svg" href="{% url 'cadastro_editora' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                             </svg></a>
                         </label> <br>
@@ -39,7 +39,35 @@
             
                     <div class="profissao">
                         <label for="">ESTADO</label> <br>
-                        {% render_field form.estado class="input-emprego" %}
+    
+                        <select class="input-emprego">
+                            <option>Acre(AC)</option>
+                            <option>Alagoas(AL)</option>
+                            <option>Amapá(AP)</option>
+                            <option>Amazonas(AM)</option>
+                            <option>Bahia(BA)</option>
+                            <option>Ceará(CE)</option>
+                            <option>Distrito Federal(DF)</option>
+                            <option>Espírito Santo(ES)</option>
+                            <option>Goiás(GO)</option>
+                            <option>Maranhão(MA)</option>
+                            <option>Mato Grosso(MT)</option>
+                            <option>Minas Gerais(MG)</option>
+                            <option>Pará(PA)</option>
+                            <option>Paraíba(PB)</option>
+                            <option>Paraná(PR)</option>
+                            <option>Pernambuco(PE)</option>
+                            <option>Piauí(PI)</option>
+                            <option>Rio de Janeiro(RJ)</option>
+                            <option>Rio Grande do Norte(RN)</option>
+                            <option>Rio Grande do Sul(RS)</option>
+                            <option>Rondônia(RO)</option>
+                            <option>Roraima(RR)</option>
+                            <option>Santa Catarina(SC)</option>
+                            <option>São Paulo(SP)</option>
+                            <option>Sergipe(SE)</option>
+                            <option>Tocantins(TO)</option>
+                        </select>
                     </div>
                 </div>
 
@@ -64,7 +92,7 @@
                     </div>
                     <div class="profissao">
                         <label for="">CLASSIFICAÇÃO
-                            <a href="{% url 'cadastro_classificacao' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <a class="svg" href="{% url 'cadastro_classificacao' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                             </svg></a>
                         </label> <br>
@@ -81,7 +109,7 @@
             
                     <div class="profissao">
                         <label for="">SESSÃO
-                            <a href="{% url 'cadastro_secao' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <a class="svg" href="{% url 'cadastro_secao' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                             </svg></a>
                         </label> <br>
@@ -89,7 +117,7 @@
                     </div>
                 </div>
                 <div class="button">
-                    <button class="bt-cadastrar">CADASTRAR</button>
+                    <input type="submit" value="CADASTRAR" class="bt-cadastrar">
                 </div>
             </form>
         </div>

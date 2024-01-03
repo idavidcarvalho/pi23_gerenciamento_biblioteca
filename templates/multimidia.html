@@ -9,6 +9,7 @@
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'periodico.css' %}">
+    <link rel="stylesheet" href="{% static 'multimidia.css' %}">
     <title>Multimídia</title>
 </head>
 <body>
@@ -16,6 +17,7 @@
     <body id="body-pd">
         <header class="header" id="header">
           <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+          
         </header>
         <div class="l-navbar fonte" id="nav-bar">
           <nav class="nav">
@@ -54,9 +56,6 @@
             </div> 
           </nav>
         </div>
-    
-    
-    
         <!--Container Main start-->
         <div class="height-100">
           <div class="container-bt">
@@ -64,10 +63,8 @@
                <h1 class="fonte text-dark ">Multimídia</h1> 
             </div>
 
-            <div class="button-novo">
-              <div class="novo-bt">
-                <p><a href="{% url 'cadastro_multimidia' %}">Nova Multimídia</a></p>
-              </div>
+            <div class="bt-novo">
+              <p><a class="button-novo" href="{% url 'cadastro_multimidia' %}">Nova multimidia</a></p>
             </div>
           </div>
 

@@ -8,8 +8,7 @@
     <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="{% static 'autor.css' %}">
-    <link rel="stylesheet" href="{% static 'usuario.css' %}">
+    <link rel="stylesheet" href="{% static 'periodico.css' %}">
     <title>Funcionários</title>
 </head>
 <body>
@@ -56,65 +55,51 @@
         </div>
     
         <!--Container Main start-->
+  
         <div class="height-100">
           <div class="container-bt">
             <div class="titulo">
-               <h1 class="fonte text-dark ">Funcionários</h1> 
+              <h1 class="fonte text-dark ">Funcionários</h1> 
             </div>
 
-            <div class="button-novo">
-              <div class="novo-bt">
-                <p><a href="{% url 'cadastro_usuario' %}">Novo Funcionário</a></p>
-              </div>
+            <div class="bt-novo">
+              <p><a class="button-novo" href="{% url 'cadastro_usuario' %}">Novo Funcionário</a></p>
             </div>
           </div>
-             {% for usuario in listar_usuario %}
-            <div class="container-funcio">
-                <div class="card-funcionarios">
-                    <div  class="funcio">
-                        <div class="img-funcio">
-                            <img  class="img-princ" src="https://thispersondoesnotexist.com/" alt="">
-                        </div>
-    
-                        <div class="informacoes">
-                            <p class="name-tt">Anderson Soares</p>
-                            <p class="name-tt cargo"> Bibliotecário</p>
-                            <p class="infos">
-                                RG: 000000 <br>
-                                CPF: 000.000.000-00 <br>
-                                Contato: (00)00000-000
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="card-funcionarios">
-                    <div  class="funcio">
-                        <div class="img-funcio">
-                            <img  class="img-princ" src="https://thispersondoesnotexist.com/" alt="">
-                        </div>
-    
-                        <div class="informacoes">
-                            <p class="name-tt">Anderson Soares</p>
-                            <p class="name-tt cargo"> Bibliotecário</p>
-                            <p class="infos">
-                                RG: 000000 <br>
-                                CPF: 000.000.000-00 <br>
-                                Contato: (00)00000-000
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" class=" bg-primary fonte">Nome</th>
+                <th scope="col" class=" bg-primary fonte">Foto</th>
+                <th scope="col" class=" bg-primary fonte">CPF</th>
+                <th scope="col" class=" bg-primary fonte">RG</th>
+                <th scope="col" class=" bg-primary fonte">Data de nascimento</th>
+                <th scope="col" class=" bg-primary fonte">Email</th>
+                <th scope="col" class=" bg-primary fonte">telefone</th>
+                <th scope="col" class=" bg-primary fonte">status</th>
+                <th scope="col" class=" bg-primary fonte">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for usuario in listar_usuario %}
+              <tr>
                 <th scope="row">{{ usuario.username }}</th>
+                <td>{{ usuario.foto }}</td>
+                <td>{{ usuario.cpf }}</td>
+                <td>{{ usuario.rg }}</td>
+                <td>{{ usuario.data_nascimento }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.telefone }}</td>
+                <td>{{ usuario.status }}</td>
                 <td>
+                  <div></div>
                     <a href="{% url 'editar_usuario' usuario.id %}" class="bt-acao ed fonte">Editar</a>
                     <a href="#" onclick="desativar_usuario({{usuario.id}})" class="bt-acao ex fonte">Desativar</a>
                 </td>
               </tr>
               {% empty %}
-              <p>Nenhum funcionário cadastrado!</p>
+              <p>Nenhum usuario cadastrado!</p>
               {% endfor %}
             </tbody>
           </table>

@@ -18,32 +18,22 @@
             <form method="post">
                 {% csrf_token %}
                 <label for="nome">AUTOR
-                    <a href="{% url 'cadastro_autor' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                    <a class="svg" href="{% url 'cadastro_autor' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                     </svg></a>
                 </label> 
 
                     {% render_field form.autor class="input-emprego" %}
                
+                <label for="nome">TIPO DE PERIÓDICO
+                    <a class="svg" href="{% url 'cadastro_tipo_periodico' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                    </svg></a>
+                </label>
+                {% render_field form.tipoPeriodico class="input-emprego" %}
 
                 <label for="nome">TÍTULO</label>
                 {% render_field form.titulo class="input-emprego" %}
-
-                <div class="form-emprego"> 
-                    <div class="profissao">
-                        <label for="">TIPO DE PERIÓDICO
-                            <a href="{% url 'cadastro_tipo_periodico' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                            </svg></a>
-                        </label> <br>
-                        {% render_field form.tipoPeriodico class="input-emprego" %}
-                    </div>
-            
-                    <div class="profissao">
-                        <label for="">NÚMERO</label> <br>
-                        {% render_field form.numero class="div-input" %}
-                    </div>
-                </div>
 
                 <div class="form-emprego">    
                     <div class="profissao">
@@ -53,7 +43,7 @@
                     </div>
                     <div class="profissao">
                         <label for="">EDITORA
-                            <a href="{% url 'cadastro_editora' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <a class="svg" href="{% url 'cadastro_editora' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                             </svg></a>
                         </label> <br>
@@ -65,11 +55,16 @@
             
                     <div class="profissao">
                         <label for="">SESSÃO
-                            <a href="{% url 'cadastro_secao' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <a class="svg" href="{% url 'cadastro_secao' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                             </svg></a>
                         </label> <br>
-                        {% render_field form.secao class="div-input" %}
+                        {% render_field form.secao class="div-input in" %}
+                    </div>
+
+                    <div class="profissao">
+                        <label for="">NÚMERO</label> <br>
+                        {% render_field form.numero class="div-input" %}
                     </div>
                 </div>
                 <div class="button">

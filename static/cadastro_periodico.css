@@ -1,5 +1,6 @@
 .input-emprego{
     height: 42px;
+    margin-bottom: 10px;
 }
 
 .div-input{
@@ -7,6 +8,18 @@
 }
 
 .form-emprego{
-    background-color: aqua;
     margin-bottom: 3px;
+}
+
+.svg{
+    text-decoration: none;
+    color: black;
+}
+
+label{
+    height: 10px;
+}
+
+.profissao{
+    height: 70px;
 }

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Estados</title>
     <link rel="stylesheet" type="text/css" href="{% static 'cadastro_leitor.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'registro_livro.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'cadastro_autor.css' %}">
 </head>
 <body>
     <div class="container">
@@ -17,8 +17,8 @@
             <form method="post">
                 {% csrf_token %}
                 <label for="nome">TIPO DE PERIÓDICO</label>
-                <div class="div-input">
-                    {% render_field form.nome class="div-input" %}
+                <div>
+                    {% render_field form.nome class="nome-input" %}
                 </div>
 
                 <div class="button">
