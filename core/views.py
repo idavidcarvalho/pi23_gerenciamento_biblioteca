@@ -6,6 +6,7 @@ from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, Estado
 from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro, Periodico, Emprestimo, Hemeroteca, Leitor, Multimidia, Emprestimo
 from django.contrib.auth.models import Permission
 
+
 def permissaoCoodenadorBibliotecario(Usuario):
     return user_passes_test('core.coordenador') or user_passes_test('core.bibliotecario')
 
@@ -469,6 +470,7 @@ def editar_periodico(request, registro):
     form = PeriodicoForm(request.POST or None, instance=periodico)
     if form.is_valid():
         form.save()
+        #messages.success(request,  'modificado com sucesso!!')
         return redirect('periodico')
     contexto = {
         'form': form

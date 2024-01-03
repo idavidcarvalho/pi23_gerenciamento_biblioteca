@@ -77,7 +77,7 @@ urlpatterns = [
     path('leitor/', leitor, name='leitor'),
     path('leitor/cadastro/', cadastro_leitor, name='cadastro_leitor'),
     path('leitor/editar/<int:rg>/', editar_leitor, name='editar_leitor'),
-    path('leitor/remover/<int:registro>', remover_leitor, name='remover_leitor'),   
+    path('leitor/remover/<int:rg>', remover_leitor, name='remover_leitor'),   
 
     path('emprestimo/', emprestimo, name='emprestimo'),
     path('emprestimo/cadastro/', cadastro_emprestimo, name='cadastro_emprestimo'),

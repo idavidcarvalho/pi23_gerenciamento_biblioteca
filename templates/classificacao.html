@@ -81,7 +81,7 @@
                 <th scope="row">{{ classificacao.nome }}</th>
                 <td>
                     <a href="{% url 'editar_classificacao' classificacao.id %}" class="bt-acao ed fonte">Editar</a>
-                    <a href="{% url 'remover_classificacao' classificacao.id %}" class="bt-acao ex fonte">Deletar</a>
+                    <a href="#" onclick="remover_classificacao({{classificacao.id}})" class="bt-acao ex fonte">Deletar</a>
                 </td>
               </tr>
               {% empty %}
@@ -94,5 +94,26 @@
     src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
   <script src="{% static 'js/script.js' %}"> </script>
   <script src="{% static 'js/scriptLink.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function remover_classificacao(id){
+      Swal.fire({
+        "title":"Tem certeza que deseja remover?",
+        "icon":"question",
+        "showCancelButton":true,
+        "cancelButtonText":"Cancelar",
+        "confirmButtonText":"Deletar",
+        "reverseButtons":true,
+        "confirmButtonColor":"red"
+      })
+      .then(function(result){
+        if(result.isConfirmed){
+          var url = 'remover';
+          window.location.href = url+"/"+id
+        }
+      })
+    }
+
+  </script>
 </body>
 </html>

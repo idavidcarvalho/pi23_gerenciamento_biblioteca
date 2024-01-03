@@ -1,4 +1,9 @@
 {% load static %}
+{% block js %}
+<script>
+  function 
+</script>
+{% endblock %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -123,7 +128,7 @@
               {% if perms.core.permissaoCoodenadorBibliotecario %}
               <a href="{% url 'editar_periodico' periodico.registro %}" class="bt-acao ed fonte">Editar</a>
 
-              <a href="{% url 'descartar_periodico' periodico.registro %}" class="bt-acao ex fonte">Descartar</a>
+              <a href="#" onclick="descartar_periodico({{periodico.registro}})" class="bt-acao ex fonte">Descartar</a>
               {% endif %}
             </td>
           </tr>
@@ -136,6 +141,27 @@
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
     <script src="{% static 'js/script.js' %}"> </script>
     <script src="{% static 'js/scriptLink.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      function descartar_periodico(registro){
+        Swal.fire({
+          "title":"Tem certeza que deseja descartar?",
+          "icon":"question",
+          "showCancelButton":true,
+          "cancelButtonText":"Cancelar",
+          "confirmButtonText":"Descartar",
+          "reverseButtons":true,
+          "confirmButtonColor":"red"
+        })
+        .then(function(result){
+          if(result.isConfirmed){
+            var url = 'descartar';
+            window.location.href = url+"/"+registro
+          }
+        })
+      }
+
+    </script>
   </body>
 
 </html>

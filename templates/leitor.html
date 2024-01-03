@@ -97,12 +97,14 @@
                 <th scope="col" class=" bg-primary fonte">Endereço</th>
                 <th scope="col" class=" bg-primary fonte">Foto</th>
                 <th scope="col" class=" bg-primary fonte">Cadastrado por:</th>
+                <th scope="col" class=" bg-primary fonte">Ação</th>
               </tr>
             </thead>
             <tbody>
                 {% for leitor in listar_leitor %}
               <tr>
                 <th scope="row">{{ leitor.nome }}</th>
+                <td>{{ leitor.rg }}</td>
                 <td>{{ leitor.profissao }}</td>
                 <td>{{ leitor.instituicao }}</td>
                 <td>{{ leitor.telefone }}</td>
@@ -113,7 +115,7 @@
                 <td>
                   <div></div>
                     <a href="{% url 'editar_leitor' leitor.rg %}" class="bt-acao ed fonte">Editar</a>
-                    <a href="{% url 'remover_leitor' leitor.rg %}" class="bt-acao ex fonte">Deletar</a>
+                    <a href="#" onclick="remover_leitor({{leitor.rg}})" class="bt-acao ex fonte">Deletar</a>
                 </td>
               </tr>
               {% empty %}
@@ -126,5 +128,26 @@
     src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
   <script src="{% static 'js/script.js' %}"> </script>
   <script src="{% static 'js/scriptLink.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      function remover_leitor(rg){
+        Swal.fire({
+          "title":"Tem certeza que deseja remover?",
+          "icon":"question",
+          "showCancelButton":true,
+          "cancelButtonText":"Cancelar",
+          "confirmButtonText":"Deletar",
+          "reverseButtons":true,
+          "confirmButtonColor":"red"
+        })
+        .then(function(result){
+          if(result.isConfirmed){
+            var url = 'remover';
+            window.location.href = url+"/"+rg
+          }
+        })
+      }
+
+    </script>
 </body>
 </html>
