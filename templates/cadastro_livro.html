@@ -17,9 +17,9 @@
             <form method="post">
                 {% csrf_token %}
                 <label for="nome">AUTOR
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                    <a href="{% url 'cadastro_autor' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                    </svg>
+                    </svg></a>
                 </label> 
 
                     {% render_field form.autor class="input-emprego" %}
@@ -30,9 +30,9 @@
                 <div class="form-emprego"> 
                     <div class="profissao">
                         <label for="">EDITORA
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <a href="{% url 'cadastro_editora' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                            </svg>
+                            </svg></a>
                         </label> <br>
                         {% render_field form.editora class="input-emprego" %}
                     </div>
@@ -59,18 +59,14 @@
                 <div class="form-emprego">
                     
                     <div class="profissao">
-                        <label for="">EDIÇÃO
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                            </svg>
-                        </label> <br>
+                        <label for="">EDIÇÃO</label> <br>
                         {% render_field form.edicao class="div-input" %}
                     </div>
                     <div class="profissao">
                         <label for="">CLASSIFICAÇÃO
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <a href="{% url 'cadastro_classificacao' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                            </svg>
+                            </svg></a>
                         </label> <br>
                         {% render_field form.classificacao class="input-emprego" %}
                     </div>
@@ -84,7 +80,11 @@
                     </div>
             
                     <div class="profissao">
-                        <label for="">SESSÃO</label> <br>
+                        <label for="">SESSÃO
+                            <a href="{% url 'cadastro_secao' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            </svg></a>
+                        </label> <br>
                         {% render_field form.secao class="div-input" %}
                     </div>
                 </div>
