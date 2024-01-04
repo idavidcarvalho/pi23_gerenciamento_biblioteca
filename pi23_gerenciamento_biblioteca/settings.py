@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'core',
+    'django_q',
 ]
 
 MIDDLEWARE = [
