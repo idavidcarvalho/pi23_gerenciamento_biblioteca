@@ -15,7 +15,7 @@
         <main>
             <p class="cadastro">CADASTRE UM NOVO LEITOR</p>
             <div class="form-leitor">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="nome">NOME</label> 
                         {% render_field form.nome class="input-emprego" %}              

@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required, permission_required, 
 from .forms import  AutorForm, EditoraForm, ClassificacaoForm, SecaoForm, EstadoForm, TipoPeriodicoForm, LivroForm, ProdutoraForm, UsuarioForm, PeriodicoForm, HemerotecaForm, MultimidiaForm, LeitorForm, EmprestimoForm
 from .models import Autor, Editora, Classificacao, Secao, Estado, TipoPeriodico, Produtora, Usuario, Livro, Periodico, Emprestimo, Hemeroteca, Leitor, Multimidia, Emprestimo
 from django.contrib.auth.models import Permission
+from django.db import IntegrityError
+from django.utils import timezone
+from django_q.models import Schedule
 
 
 def permissaoCoodenadorBibliotecario(Usuario):
@@ -650,15 +653,27 @@ def remover_leitor (request, rg):
 
 @login_required
 def cadastro_emprestimo(request):
-    form = EmprestimoForm(request.POST or None)
-    if form.is_valid():
-        emprestimo = form.save(commit=False)
-        emprestimo.criado_por = request.user
-        emprestimo.save()
-        return redirect('emprestimo')
-    contexto = {
-        'form': form
-    }
+    if request.method == 'POST':
+        form = EmprestimoForm(request.POST)
+        try:
+            if form.is_valid():
+                emprestimo = form.save(commit=False)
+                emprestimo.realizado_por = request.user
+                emprestimo.data_emprestimo = timezone.now()
+                emprestimo.save()
+                
+                # Agendar verificação de atraso
+                emprestimo_id = emprestimo.id
+                Schedule.objects.create(func='core.tasks.verificar_atraso', args=f'{emprestimo_id}', schedule_type=Schedule.ONCE)
+
+                return redirect('emprestimo')
+        except IntegrityError:
+            form.add_error('livro', "Você deve emprestar um livro ou um periódico.")
+
+    else:
+        form = EmprestimoForm()
+
+    contexto = {'form': form}
     return render(request, 'cadastro_emprestimo.html', contexto)
 
 @login_required
@@ -674,3 +689,4 @@ def cancelar_emprestimo(request, id):
     emprestimo.status = 'Cancelado'
     emprestimo.save()
     return redirect('emprestimo')
+

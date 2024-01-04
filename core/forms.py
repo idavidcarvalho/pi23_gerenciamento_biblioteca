@@ -68,6 +68,8 @@ class LeitorForm(forms.ModelForm):
         fields = ['rg', 'nome','profissao', 'instituicao', 'telefone', 'email', 'endereco', 'foto']
 
 class EmprestimoForm(forms.ModelForm):
+    livro = forms.ModelChoiceField(queryset=Livro.objects.all(), required=False)
+    periodico = forms.ModelChoiceField(queryset=Periodico.objects.all(), required=False)
     class Meta: 
         model = Emprestimo
         fields = ['justificativa', 'leitor', 'periodico', 'livro']
