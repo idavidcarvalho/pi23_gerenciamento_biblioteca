@@ -765,3 +765,4 @@ def cancelar_emprestimo(request, id):
     emprestimo.save()
     return redirect('emprestimo')
 
+
