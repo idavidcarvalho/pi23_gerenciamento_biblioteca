@@ -85,7 +85,7 @@
                 <td>{{emprestimo.livro }}</td>
                 <td>{{emprestimo.periodico }}</td>
                 <td>{{emprestimo.realizado_por}}</td>
-                <td>{{periodico.status}}</td>
+                <td>{{emprestimo.status}}</td>
                 <td>
                     <a href="#" onclick="cancelar_emprestimo({{emprestimo.id}})" class="bt-acao ex fonte">Cancelar</a>
                 </td>
@@ -104,7 +104,7 @@
   <script src="{% static 'js/script.js' %}"> </script>
   <script src="{% static 'js/scriptLink.js' %}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
+  <script >
     function cancelar_emprestimo(id){
       Swal.fire({
         "title":"Tem certeza que deseja cancelar?",

@@ -1,5 +1,8 @@
 from django.db import models, IntegrityError, transaction
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
+from django_q.models import Schedule
+
 
 class Usuario(AbstractUser):
     cpf = models.CharField('CPF', max_length=11, unique=True)
@@ -8,7 +11,7 @@ class Usuario(AbstractUser):
     data_nascimento = models.DateField('Data de Nascimento', null=True)
     email = models.CharField('Email:', max_length=100, null=False)
     telefone = models.CharField('Telefone:', max_length=11, null= False)
-    foto = models.BinaryField(null=True)
+    foto = models.ImageField(upload_to='funcionarios', null=False)
     status = models.CharField(max_length=45,choices=[('ativo', 'Ativo'), ('inativo', 'Inativo')], default='ativo')
     USERNAME_FIELD = 'cpf'
     REQUIRED_FIELDS = ['username']
@@ -136,30 +139,39 @@ class Leitor(models.Model):
         return self.nome
 
 # Define the `Emprestimo` model
+from django.db import models, IntegrityError
+
+from django.db import models
+from django.utils import timezone
+from django_q.models import Schedule
+
+from django.db import models
+
 class Emprestimo(models.Model):
     leitor = models.ForeignKey(Leitor, on_delete=models.CASCADE)
-    periodico = models.ForeignKey(Periodico, on_delete=models.CASCADE, null=True)
-    livro = models.ForeignKey(Livro, on_delete=models.CASCADE, null=True)
-    status = models.CharField(max_length=45,choices=[('em andamento', 'Em andamento'), ('cancelado', 'Cancelado'), ('devolvido', 'Devolvido'), ('atrasado', 'Atrasado')], default='em andamento')
+    periodico = models.ForeignKey(Periodico, on_delete=models.CASCADE, null=True, default=None)
+    livro = models.ForeignKey(Livro, on_delete=models.CASCADE, null=True, default=None)
+    status = models.CharField(max_length=45, choices=[('em andamento', 'Em andamento'), ('cancelado', 'Cancelado'), ('devolvido', 'Devolvido'), ('atrasado', 'Atrasado')], default='em andamento')
     realizado_por = models.ForeignKey(Usuario, on_delete=models.PROTECT)
     justificativa = models.TextField(blank=True, null=True)
 
+    def __str__(self):
+        return f"Emprestimo {self.id}"
 
     def save(self, *args, **kwargs):
-        if self.livro is None and self.periodico is None:
-            raise IntegrityError("Você deve emprestar um livro ou um periódico.")
+        if not self.id:  # Verifica se é um novo empréstimo (não uma atualização)
+            # Atualiza o status do livro se houver um livro associado ao empréstimo
+            if self.livro:
+                self.livro.status = 'emprestado'
+                self.livro.save()
+
+            # Atualiza o status do periódico se houver um periódico associado ao empréstimo
+            if self.periodico:
+                self.periodico.status = 'emprestado'
+                self.periodico.save()
+
         super().save(*args, **kwargs)
 
-    class Meta:
-        constraints = [
-            models.CheckConstraint(
-                check=models.Q(livro__isnull=False) | models.Q(periodico__isnull=False),
-                name="livro_ou_periodico_not_null"
-            )
-        ]
-
-    def __str__(self):
-        return f"Emprestimo {self.idEmprestimo}"
 
 # Define the `Hemeroteca` model
 class Hemeroteca(models.Model):

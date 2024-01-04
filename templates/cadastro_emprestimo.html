@@ -2,6 +2,7 @@
 {% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,36 +12,60 @@
     <link rel="stylesheet" href="{% static 'cadastro_periodico.css' %}">
     <link rel="stylesheet" href="{% static 'cadastro_emprestimo.css' %}">
 </head>
+
 <body>
     <div class="container">
         <main>
-        <p class="cadastro">REALIZE UM NOVO EMPRÉSTIMO</p>
-        <div class="form-leitor">
-            <form method="post">
-                {% csrf_token %}
-                <label for="nome">LEITOR</label> 
+            <p class="cadastro">REALIZE UM NOVO EMPRÉSTIMO</p>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+
+            <div class="form-leitor">
+
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="nome">LEITOR</label>
                     {% render_field form.leitor class="input-emprego" %}
 
-                <label for="nome">PERIÓDICO
-                    <a class="svg" href="{% url 'cadastro_periodico' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                    </svg></a>
-                </label> 
-                {% render_field form.periodico class="input-emprego" %}
+                    <label for="nome">PERIÓDICO
+                        <a class="svg" href="{% url 'cadastro_periodico' %}"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                            </svg></a>
+                    </label>
+                    {% render_field form.periodico class="input-emprego" %}
 
-                <label for="nome">LIVRO
-                    <a class="svg" href="{% url 'cadastro_livro' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                    </svg></a>
-                </label> 
-                {% render_field form.livro class="input-emprego" %}
+                    <label for="nome">LIVRO
+                        <a class="svg" href="{% url 'cadastro_livro' %}"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="15" height="15" fill="currentColor" class="bi bi-plus-circle-fill"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                            </svg></a>
+                    </label>
+                    {% render_field form.livro class="input-emprego" %}
+                    {% if form.livro.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.livro.errors %}
+                        <h4 style="color: red;">{{ error }}</h4>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="button">
+                        <input type="submit" value="SALVAR" class="bt-cadastrar">
+                    </div>
 
-                <div class="button">
-                    <input type="submit" value="SALVAR" class="bt-cadastrar">
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
         </main>
     </div>
 </body>
+
 </html>

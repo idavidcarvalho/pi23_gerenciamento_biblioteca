@@ -2,6 +2,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,64 +10,93 @@
     <link rel="stylesheet" href="{% static 'cadastro_leitor.css' %}">
     <link rel="stylesheet" href="{% static 'cadastro_funcionario.css' %}">
 </head>
+
 <body>
     <div class="container">
         <main>
-        <p class="cadastro">CADASTRE UM FUNCIONÁRIO</p>
-        <div class="form-leitor">
-            <form method="post">
-                {% csrf_token %}
+            <p class="cadastro">CADASTRE UM FUNCIONÁRIO</p>
+            <div class="form-leitor">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
 
-                <label for="nome">NOME</label>
-                <div class="input-nome">
-                    {% render_field form.cpf class="nome-input" %}
-                </div>
-
-                <div class="form-emprego">
-                    <div class="profissao">
-                        <label for="cpf">CPF</label> <br>
-                        {% render_field form.cpf class="input-emprego" %}
+                    <label for="nome">NOME</label>
+                    <div class="input-nome">
+                        {% render_field form.nome_completo class="nome-input" id="nome" %}
                     </div>
-            
-                    <div class="profissao">
-                        <label for="rg">RG</label> <br>
-                        {% render_field form.rg class="input-emprego" %}
-                    </div>
-                </div>
 
-                <label for="nome">E-MAIL</label>
-                <div class="input-nome">
-                    {% render_field form.email class="nome-input" %}
-                </div>
-
-                <div class="form-emprego">
-                    
-                    <div class="profissao">
-                        <label for="">CARGO</label> <br>
-                        <select class="input-emprego" name="permissao">
-                            <option value="bibliotecario">Bibliotecário</option>
-                            <option value="coordenador">Coordenador</option>
-                            <option value="auxiliar">Auxiliar</option>
-                        </select>
+                    <label for="usuario">USUÁRIO</label>
+                    <div class="input-nome">
+                        {% render_field form.username class="nome-input" id="usuario" %}
                     </div>
-            
-                    <div class="profissao">
-                        <label for="telefone">TELEFONE</label> <br>
-                        {% render_field form.telefone class="input-emprego" %}
-                    </div>
-                </div>
-                
-                <label for="nome">IMAGEM</label>
-                <div class="div-file">
-                    <input class="input-file" type="file">
-                </div>
 
-                <div class="button">
-                    <input type="submit"  class="bt-cadastrar" value="CADASTRAR">
-                </div>
-            </form>
-        </div>
+                    <div class="form-emprego">
+                        <div class="profissao">
+                            <label for="cpf">CPF</label> <br>
+                            {% render_field form.cpf class="input-emprego" id="cpf" type="number"%}
+                        </div>
+
+                        <div class="profissao">
+                            <label for="rg">RG</label> <br>
+                            {% render_field form.rg class="input-emprego" type="number" %}
+                        </div>
+                    </div>
+
+                    <label for="nome">E-MAIL</label>
+                    <div class="input-nome">
+                        {% render_field form.email class="nome-input" type="email" %}
+                    </div>
+
+                    <div class="form-emprego">
+
+                        <div class="profissao">
+                            <label for="">CARGO</label> <br>
+                            <select class="input-emprego" name="permissao">
+                                <option value="bibliotecario">Bibliotecário</option>
+                                <option value="coordenador">Coordenador</option>
+                                <option value="auxiliar">Auxiliar</option>
+                            </select>
+                        </div>
+
+                        <div class="profissao">
+                            <label for="telefone">TELEFONE</label> <br>
+                            {% render_field form.telefone class="input-emprego" type="number" %}
+                        </div>
+                    </div>
+                    <div class="form-emprego">
+                        <div class="profissao">
+                            <label for="telefone">DATA DE NASCIMENTO</label> <br>
+                            {% render_field form.data_nascimento class="input-emprego" type="date" %}
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-emprego">
+                        <div class="profissao">
+                            <label for="senha1">SENHA</label> <br>
+                            {% render_field form.password1 class="input-emprego" id="senha1" type="password"%}
+                        </div>
+
+                        <div class="profissao">
+                            <label for="senha2">CONFIRMAÇÃO DE SENHA</label> <br>
+                            {% render_field form.password2 class="input-emprego" type="password" %}
+                        </div>
+                    </div>
+                    <label for="imagem">IMAGEM</label>
+                    <div class="div-file">
+                        <input class="input-file" type="file" id="imagem">
+                    </div>
+
+                    <div class="button">
+                        <input type="submit" class="bt-cadastrar" value="CADASTRAR">
+                    </div>
+
+                    <!-- {{form.as_p}} -->
+                </form>
+            </div>
         </main>
     </div>
 </body>
+
 </html>
