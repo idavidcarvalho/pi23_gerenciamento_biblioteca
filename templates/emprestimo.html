@@ -17,15 +17,6 @@
       <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
 
-        <div class="container-busca">
-          <form action="{% url 'emprestimo' %}" method="post">
-            {% csrf_token %}
-            <div>
-              <input class="input-buscar" type="text" name="leitor" value="{{leitor}}">
-              <input class="bt-buscar" type="submit" value="Buscar">
-            </div>
-          </form>
-        </div>
       </header>
         <div class="l-navbar fonte" id="nav-bar">
           {% include 'menu.html' %}
