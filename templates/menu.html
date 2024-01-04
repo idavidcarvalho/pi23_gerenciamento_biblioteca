@@ -1,0 +1,35 @@
+<nav class="nav">
+    <div> 
+          <h3 class="nav_logo-name text-center mb-5">BiblioGest</h3>
+        
+        <div class="nav_list"> 
+          <a href="{% url 'home' %}" class="nav_link active"> 
+            <i class='bx bxs-home nav_icon'></i> 
+              <spanclass="nav_name">INÍCIO</spanclass=> </a> 
+          </a> 
+          <a href="{% url 'usuario' %}" class="nav_link"> 
+            <i class='bx bxs-group nav_icon'></i> 
+            <span class="nav_name">FUNCIONÁRIOS</span> 
+          </a> 
+          <a href="{% url 'leitor' %}" class="nav_link"> 
+            <i class='bx bxs-book-reader nav_icon'></i>
+            <span class="nav_name">LEITORES</span>
+          </a> 
+          <a href="{% url 'acervo' %}" class="nav_link"> 
+            <i class='bx bxs-book nav_icon'></i>
+            <span class="nav_name">ACERVO</span>
+          </a>      
+          <a href="{% url 'emprestimo' %}" class="nav_link"> 
+            <i class='bx bx-repost nav_icon'></i>
+            <span class="nav_name">EMPRÉSTIMOS</span> 
+          </a> 
+          <a href=" {% url 'minha_conta' %} " class="nav_link"> 
+            <i class='bx bx-user nav_icon'></i>
+        <span class="nav_name">MINHA CONTA</span> 
+         </div>
+         <a href="{% url 'logout' %}" class="nav_link"> 
+          <i class='bx bx-log-out nav_icon'></i> 
+          <span class="nav_name">Sair</span> 
+        </a>
+    </div> 
+  </nav>
