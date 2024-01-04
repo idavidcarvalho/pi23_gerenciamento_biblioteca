@@ -170,6 +170,7 @@ main {
     border-radius: 8px;
     border: none;
     background-color: #4778EC;
+    text-decoration: none;
 }
 
 .saiba-mais:hover{

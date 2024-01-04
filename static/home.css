@@ -7,6 +7,9 @@
     overflow: hidden;
   }
 
+.fonte-icon{
+    font-size: 40px;
+}
 .container{
     background-color: #ECF2F7;
     display: flex;

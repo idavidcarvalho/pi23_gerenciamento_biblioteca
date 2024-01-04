@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@500&family=Bree+Serif&display=swap');
 *{
     padding: 0;
     margin: 0;
@@ -8,7 +9,6 @@
 .container{
     background-color: #ECF2F7;
     width: 100vw;
-    height: 100vh;
     display: grid;
     grid-template-areas: 
     "main";
@@ -60,6 +60,11 @@
     border: none;
 }
 
+.servicos:hover, .servicos-1:hover{
+    background-color: #9bb6eb;
+}
+
+
 .container-colaboradores{
     display: flex;
     justify-content: center;
@@ -71,4 +76,54 @@
     font-family: Anton;
     font-size: 30px;
     color: #022978;
+}
+
+.container-names{
+    display: flex;
+    gap: 5px;
+    margin-left: 30px;
+    margin-bottom: 200px;
+}
+
+.img{
+    border-radius: 100%;
+    width: 90%;
+}
+
+.imagem{
+    width: 22%;
+    height: 80px;
+    padding: 10px;
+    display: flex;
+    border-right:1px solid black ;
+    margin-top: 80px;
+}
+
+.imagem:hover{
+    background-color: #9bb6eb;
+}
+
+.foto{
+    width: 30%;
+    margin-right: 5px;
+}
+
+.colab{
+    margin-left: 1px;
+}
+
+.autor{
+    font-size: 14px;
+    font-family: Bree Serif;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.link{
+    font-size: 10px;
+    color: rgb(70, 70, 70);
+}
+
+.in{
+    border: none;
 }
