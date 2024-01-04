@@ -14,9 +14,32 @@
 <body>
 
     <body id="body-pd">
-        <header class="header" id="header">
-          <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        </header>
+      <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="container-busca">
+          <form action="{% url 'livro' %}" method="post">
+            {% csrf_token %}
+            <div>
+              <input class="input-buscar" type="text" name="titulo" value="{{titulo}}">
+              <input class="bt-buscar" type="submit" value="Buscar">
+            </div>
+            <div class="status">
+              <div>
+                Status
+                <select class="select" name="status">
+            
+                  <option class="option" value="-1">Todos</option>
+                  <option class="option" value="1">Descartatos</option>
+                  <option class="option" value="2">Ativos</option>
+                  <option class="option" value="3">Emprestados</option>
+                  <option class="option" value="4">Extraviados</option>
+    
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </header>
         <div class="l-navbar fonte" id="nav-bar">
           <nav class="nav">
             <div> 

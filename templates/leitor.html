@@ -19,10 +19,10 @@
           <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
 
           <div class="container-busca">
-            <form action="{% url 'periodico' %}" method="post">
+            <form action="{% url 'leitor' %}" method="post">
               {% csrf_token %}
               <div>
-                <input class="input-buscar" type="text" name="titulo" value="{{titulo}}">
+                <input class="input-buscar" type="text" name="rg" value="{{rg}}">
                 <input class="bt-buscar" type="submit" value="Buscar">
               </div>
             </form>

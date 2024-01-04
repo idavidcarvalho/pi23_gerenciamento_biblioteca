@@ -59,7 +59,12 @@ def cadastro_editora(request):
 
 @login_required
 def editora(request):
-    listar_editora = Editora.objects.all()
+    nome = ''
+    if request.POST:
+        nome = request.POST['nome']
+        listar_editora = Editora.objects.filter(nome__contains=nome)
+    else:
+        listar_editora = Editora.objects.all()
     contexto = {
         'listar_editora': listar_editora
     }
@@ -100,7 +105,12 @@ def cadastro_classificacao(request):
 
 @login_required
 def classificacao(request):
-    listar_classificacao = Classificacao.objects.all()
+    nome = ''
+    if request.POST:
+        nome = request.POST['nome']
+        listar_classificacao = Classificacao.objects.filter(nome__contains=nome)
+    else:
+        listar_classificacao = Classificacao.objects.all()
     contexto = {
         'listar_classificacao': listar_classificacao
     }
@@ -141,7 +151,12 @@ def cadastro_secao(request):
 
 @login_required
 def secao(request):
-    listar_secao = Secao.objects.all()
+    nome = ''
+    if request.POST:
+        nome = request.POST['nome']
+        listar_secao = Secao.objects.filter(nome__contains=nome)
+    else:
+        listar_secao = Secao.objects.all()
     contexto = {
         'listar_secao': listar_secao
     }
@@ -217,7 +232,12 @@ def cadastro_tipo_periodico(request):
 
 @login_required
 def tipo_periodico(request):
-    listar_tipo_periodico = TipoPeriodico.objects.all()
+    nome = ''
+    if request.POST:
+        nome = request.POST['nome']
+        listar_tipo_periodico = TipoPeriodico.objects.filter(nome__contains=nome)
+    else:
+        listar_tipo_periodico = TipoPeriodico.objects.all()
     contexto = {
         'listar_tipo_periodico': listar_tipo_periodico
     }
@@ -258,7 +278,12 @@ def cadastro_produtora(request):
 
 @login_required
 def produtora(request):
-    listar_produtora = Produtora.objects.all()
+    nome = ''
+    if request.POST:
+        nome = request.POST['nome']
+        listar_produtora = Produtora.objects.filter(nome__contains=nome)
+    else: 
+        listar_produtora = Produtora.objects.all()
     contexto = {
         'listar_produtora': listar_produtora
     }
@@ -299,7 +324,12 @@ def cadastro_autor(request):
 
 @login_required
 def autor(request):
-    listar_autor = Autor.objects.all()
+    nome = ''
+    if request.POST:
+        nome = request.POST['nome']
+        listar_autor = Autor.objects.filter(nome__contains=nome)
+    else:
+        listar_autor = Autor.objects.all()
     contexto = {
         'listar_autor': listar_autor
     }
@@ -354,7 +384,12 @@ def cadastro_usuario(request):
 @login_required
 @permission_required('core.coordenador')
 def usuario(request):
-    listar_usuario = Usuario.objects.all()
+    cpf = ''
+    if request.POST:
+        cpf = request.POST['cpf']
+        listar_usuario = Usuario.objects.filter(cpf__contains=cpf)
+    else:
+        listar_usuario = Usuario.objects.all()
     contexto = {
         'listar_usuario': listar_usuario
     }
@@ -403,7 +438,27 @@ def cadastro_livro(request):
 
 @login_required
 def livro(request):
-    listar_livro = Livro.objects.all()
+    titulo = ''
+    status =''
+    autor = ''
+    if request.POST:
+        autor = request.POST['autor']
+        titulo = request.POST['titulo']
+        status = request.POST['status']
+        if request.POST['status'] =='1':
+            listar_livro = Livro.objects.filter(titulo__contains=titulo).filter(status='Descartado')
+        elif request.POST['status'] == '2':
+            listar_livro = Livro.objects.filter(titulo__contains=titulo).filter(status='ativo')
+        elif request.POST['status'] == '-1':
+            listar_livro = Livro.objects.all()
+        elif request.POST['status'] == '3':
+            listar_livro = Livro.objects.filter(titulo__contains=titulo).filter(status='emprestado')
+        elif request.POST['status'] == '4':
+            listar_livro = Livro.objects.filter(titulo__contains=titulo).filter(status='extraviado')
+
+    else:
+        listar_livro = Livro.objects.all()
+        
     contexto = {
         'listar_livro': listar_livro
     }
@@ -522,7 +577,12 @@ def cadastro_hemeroteca(request):
 
 @login_required
 def hemeroteca(request):
-    listar_hemeroteca = Hemeroteca.objects.all()
+    registro = ''
+    if request.POST:
+        registro = request.POST['registro']
+        listar_hemeroteca = Hemeroteca.objects.filter(registro__contains=registro)
+    else: 
+        listar_hemeroteca = Hemeroteca.objects.all()
     contexto = {
         'listar_hemeroteca': listar_hemeroteca
     }
@@ -571,7 +631,12 @@ def cadastro_multimidia(request):
 
 @login_required
 def multimidia(request):
-    listar_multimidia = Multimidia.objects.all()
+    titulo = ''
+    if request.POST:
+        titulo = request.POST['titulo']
+        listar_multimidia = Multimidia.objects.filter(titulo__contains=titulo)
+    else:
+        listar_multimidia = Multimidia.objects.all()
     contexto = {
         'listar_multimidia': listar_multimidia
     }
@@ -618,7 +683,12 @@ def cadastro_leitor(request):
 
 @login_required
 def leitor(request):
-    listar_leitor = Leitor.objects.all()
+    rg = ''
+    if request.POST:
+        rg = request.POST['rg']
+        listar_leitor = Leitor.objects.filter(rg__contains=rg)
+    else:
+        listar_leitor = Leitor.objects.all()
     contexto = {
         'listar_leitor': listar_leitor
     }
@@ -678,7 +748,12 @@ def cadastro_emprestimo(request):
 
 @login_required
 def emprestimo(request):
-    listar_emprestimo = Emprestimo.objects.all()
+    leitor = ''
+    if request.POST:
+        leitor = request.POST['leitor']
+        listar_emprestimo = Emprestimo.objects.filter(leitor__contains=leitor)
+    else:
+        listar_emprestimo = Emprestimo.objects.all()
     contexto = {
         'listar_emprestimo': listar_emprestimo
     }
