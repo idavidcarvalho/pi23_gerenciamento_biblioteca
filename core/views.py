@@ -17,9 +17,11 @@ def permissaoCoodenadorBibliotecario(Usuario):
 def home(request):
     return render(request, 'home.html')
 
+@login_required
 def conta(request):
     return render(request, 'minha_conta.html')
 
+@login_required
 def acervo(request):
     return render(request, 'acervo.html')
 
@@ -183,7 +185,8 @@ def remover_secao (request,id):
     return redirect('secao')
 
 # ----------- CRUD Estado ------------
-
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def cadastro_estado(request):
     form = EstadoForm(request.POST or None)
     if form.is_valid():
@@ -201,6 +204,8 @@ def estado(request):
     }
     return render(request, 'estado.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def editar_estado(request, id):
     estado = Estado.objects.get(pk=id)
     form = EstadoForm(request.POST or None, instance=estado)
@@ -212,6 +217,8 @@ def editar_estado(request, id):
     }
     return render(request, 'cadastro_estado.html', contexto)
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def remover_estado (request,id):
     estado = Estado.objects.get(pk=id)
     estado.delete()
@@ -415,6 +422,8 @@ def remover_usuario (request,id):
     usuario.delete()
     return redirect('usuario')
 
+@login_required
+@permission_required('core.coordenador')
 def desativar_usuario(request, id):
    usuario = Usuario.objects.get(pk=id)
    usuario.status = 'Inativo'
@@ -484,6 +493,8 @@ def remover_livro (request,registro):
     livro.delete()
     return redirect('livro')
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def descartar_livro(request, registro):
     livro = Livro.objects.get(pk=registro)
     livro.status = 'Descartado'
@@ -554,6 +565,8 @@ def remover_periodico (request, registro):
     periodico.delete()
     return redirect('periodico')
 
+@login_required
+@user_passes_test(permissaoCoodenadorBibliotecario)
 def descartar_periodico(request, registro):
     periodico = Periodico.objects.get(pk=registro)
     periodico.status = 'Descartado'
@@ -758,7 +771,7 @@ def emprestimo(request):
         'listar_emprestimo': listar_emprestimo
     }
     return render(request, 'emprestimo.html', contexto)
-
+@login_required
 def cancelar_emprestimo(request, id):
     emprestimo = Emprestimo.objects.get(pk=id)
     emprestimo.status = 'Cancelado'
